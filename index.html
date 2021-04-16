@@ -1,16 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- D3 -->
+	  <script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Wine Visulization</title>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- MDB icon -->
+    <link rel="icon" href="../../img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="../../css/mdb.min.css" />
+    <!-- PRISM -->
+    <link rel="stylesheet" href="../../dev/css/new-prism.css" />
+    <!-- Custom styles -->
+	<link rel="stylesheet" href="./css/animate.css"/>
+    <style></style>
+  </head>
+  
+  <body>
+       <!-- Sidebar -->
+       <div id="wrapper">
+       <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Anout Us
+                </a>
+            </li>
+            <li>
+                <a href="#">Intro</a>
+            </li>
+            <li>
+                <a href="#">Map</a>
+            </li>
+            <li>
+                <a href="#">Scatter</a>
+            </li>
+            <li>
+                <a href="#bar">Bar</a>
+            </li>
+            <li>
+                <a href="#">Result</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <div class="container my-5 p-5 shadow-3 text-center" id="page-content-wrapper">
+      <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">>Toggle Menu<</a>
+      <!--Section: Content 1-->
+      <section>
+        <h3 class="mb-0">Wine Visulization</h3>
+      <br/>
+		    <h5 class ="mb-2">Best Wine Review Visulization for Both Costomer & Merchandise</h5>
+		    <h6 class ="mb-0">Umass Amherst Spring 2021</h6>
+      </section>
+      <!--Section: Content 1-->
+    </div>
 
-	<head>
-		<meta charset="utf-8">
-		<title>Wine Review</title>
-		<script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
-		<style type="text/css">
-		</style>
-	</head>
-        
-	<body>
-        <a>Wine Visulization</a><br>
-        <a href="./bar/barchart.html">bar</a>
-	</body>
+    <br />
+
+    <div class="container my-5 p-5 shadow-3 text-center" id="bar">
+      <!--Section: Content 2-->
+      <section >
+		<h3 class="mb-3">Material Design Blocks</h3>
+        <iframe src='./bar/barchart.html' height = 650 width = 800 ></iframe>
+        <p class="md-3">
+          Bar chart is good for presenting information and making comparisons. Users may want to investigate the information of each category of wine, and also make comparisons of wines with respect to the prices, the ratings, the popularity, or the related taster and winery. Consequently, we develop several bar charts to present and compare the attributes and values among the wines, wineries as well as tasters.
+        </p>
+      </section>
+      <!--Section: Content 2-->
+    </div>
+
+    <br />
+
+    <div class="container my-5 p-5 shadow-3">
+      <!--Section: Content 3-->
+      <section>
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="https://mdbootstrap.com/img/new/slides/303.jpg"
+              class="img-fluid shadow-2-strong"
+            />
+          </div>
+          <div class="col-md-6">
+            <h3 class="mb-3">Scatter Plot</h3>
+            <p class="mb-4">
+              随便吧
+            </p>
+            <button type="button" class="btn btn-primary">Download</button>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content 3-->
+    </div>
+    </div>
+
+    <!-- PRISM -->
+    <script type="text/javascript" src="../../dev/js/new-prism.js"></script>
+    <!-- MDB SNIPPET -->
+    <script type="text/javascript" src="../../dev/js/dist/mdbsnippet.min.js"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="../../js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script>
+      $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      });
+
+    </script>
+
+  </body>
 </html>
