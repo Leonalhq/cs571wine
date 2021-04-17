@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Stack layout stacked bar chart</title>
+		<script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
+		<script type="text/javascript" src="barchart.js"></script>
+		<style type="text/css">
+			rect:hover{
+				fill: red;
+			}
+			.bar{
+				fill: green;
+			}
+		</style>
+	</head>
+	<body>
+		<select id="operation">
+			<option id="PointsAndPrice" value="PointsAndPrice">Present Points And Price</option>
+			<option value="PointsAndPopularity">Present Points And Popularity</option>
+			<option value="PriceAndPopularity">Present Price And Popularity</option>
+		</select>
+
+		<script type="text/javascript">
+			const h = 300;
+			const w = 500;
+			const padding = 60;
+
+			d3.csv('https://raw.githubusercontent.com/jamesxiang11/test/main/ScatterplotData.csv', d3.autoType)
+				.then(function (data) {
+					var operator = "PointsAndPrice"
+					select_operator(operator, data);
+
+                    d3.selectAll("select")
+						.on("click", function () {
+							var new_operator = this.value
+							if (new_operator != operator) {
+                                remove_operator(operator);
+                                select_operator(new_operator, data);
+                                operator = new_operator;
+                            }
+
+                        })
+
+				});
+
+
+
+
+		</script>
+	</body>
+</html>

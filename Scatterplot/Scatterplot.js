@@ -1,0 +1,268 @@
+function loadData(d, i) {
+    return {
+        Points1: d.Points1,
+        Price1: Number(d.Price1),
+        top: i + 1,
+
+        //country + count
+        //country: d.Country,
+        //produce: Number(d.Produce)
+    };
+}
+
+function select_operator(operator, data) {
+	if (operator == "PointsAndPrice") {
+		presentPointsAndPrice(data);
+	} else if (operator == "PointsAndPopularity") {
+		presentPointsAndPopularity(data);
+	}
+  else if (operator == "PriceAndPopularity") {
+		presentPriceAndPopularity(data);
+	}
+}
+
+
+function presentPointsAndPrice  (data) {
+	var dataset = data;
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+
+  xScale = d3.scaleLinear()
+           .domain([
+            d3.min(dataset, function(d) { return d.Price1; }),
+            d3.max(dataset, function(d) { return d.Price1; })
+          ])
+           .range([padding, w - padding]);
+
+  yScale = d3.scaleLinear()
+           .domain([
+            d3.min(dataset, function(d) { return d.Points1; }),
+            d3.max(dataset, function(d) { return d.Points1; })
+          ])
+           .range([h - padding, padding]);
+
+   //Define X axis
+   xAxis = d3.axisBottom()
+              .scale(xScale)
+              .ticks(5);
+
+  //Define Y axis
+   yAxis = d3.axisLeft()
+              .scale(yScale)
+              .ticks(5);
+
+
+    svg.selectAll("circle")
+       .data(dataset)
+       .enter()
+       .append("circle")
+       .attr("cx", function(d) {
+          return xScale(d.Price1);
+       })
+       .attr("cy", function(d) {
+          return yScale(d.Points1);
+       })
+       .attr("r", 3)
+       .transition()
+       .duration(500)
+
+
+       d3.selectAll("circle").on("mouseover", function(d) {
+         d3.select(this)
+         .append("title")
+         .text(function(d){
+          return "Price: "+d.Price1+" \n";
+        })
+        .append("title")
+        .text(function(d){
+         return "Points: "+d.Points1;
+       })
+        });
+
+        //Create X axis
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(0," + (h - padding) + ")")
+          .call(xAxis);
+
+        //Create Y axis
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(" + padding + ",0)")
+          .call(yAxis);
+
+          svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("x", 260)
+          .attr("y", 290)
+          .text("Price");
+
+          svg.append("text")
+      .attr("y", 150)
+      .attr("x",20)
+      .style("text-anchor", "middle")
+      .text("Points");
+}
+
+
+
+function presentPointsAndPopularity(data) {
+  var dataset = data;
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+
+  xScale = d3.scaleLinear()
+           .domain([
+            d3.min(dataset, function(d) { return d.Popularity2; }),
+            d3.max(dataset, function(d) { return d.Popularity2; })
+          ])
+           .range([padding, w - padding]);
+
+  yScale = d3.scaleLinear()
+           .domain([
+            d3.min(dataset, function(d) { return d.Points2; }),
+            d3.max(dataset, function(d) { return d.Points2; })
+          ])
+           .range([h - padding, padding]);
+
+   //Define X axis
+   xAxis = d3.axisBottom()
+              .scale(xScale)
+              .ticks(5);
+
+  //Define Y axis
+   yAxis = d3.axisLeft()
+              .scale(yScale)
+              .ticks(5);
+
+
+    svg.selectAll("circle")
+       .data(dataset)
+       .enter()
+       .append("circle")
+       .attr("cx", function(d) {
+          return xScale(d.Popularity2);
+       })
+       .attr("cy", function(d) {
+          return yScale(d.Points2);
+       })
+       .attr("r", 3)
+       .transition()
+       .duration(500)
+
+
+       d3.selectAll("circle").on("mouseover", function(d) {
+         d3.select(this)
+         .append("title")
+         .text(function(d){
+          return "Price: "+d.Popularity2+" \n";
+        })
+        .append("title")
+        .text(function(d){
+         return "Points: "+d.Points2;
+       })
+        });
+
+        //Create X axis
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(0," + (h - padding) + ")")
+          .call(xAxis);
+
+        //Create Y axis
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(" + padding + ",0)")
+          .call(yAxis);
+
+          svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("x", 260)
+          .attr("y", 290)
+          .text("Price");
+
+          svg.append("text")
+      .attr("y", 150)
+      .attr("x",20)
+      .style("text-anchor", "middle")
+      .text("Points");
+}
+
+function presentPriceAndPopularity(data){
+  var dataset = data;
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+
+  xScale = d3.scaleLinear()
+           .domain([
+            d3.min(dataset, function(d) { return d.Price3; }),
+            d3.max(dataset, function(d) { return d.Price3; })
+          ])
+           .range([padding, w - padding]);
+
+  yScale = d3.scaleLinear()
+           .domain([
+            d3.min(dataset, function(d) { return d.Popularity3; }),
+            d3.max(dataset, function(d) { return d.Popularity3; })
+          ])
+           .range([h - padding, padding]);
+
+   //Define X axis
+   xAxis = d3.axisBottom()
+              .scale(xScale)
+              .ticks(5);
+
+  //Define Y axis
+   yAxis = d3.axisLeft()
+              .scale(yScale)
+              .ticks(5);
+
+
+    svg.selectAll("circle")
+       .data(dataset)
+       .enter()
+       .append("circle")
+       .attr("cx", function(d) {
+          return xScale(d.Price3);
+       })
+       .attr("cy", function(d) {
+          return yScale(d.Popularity3);
+       })
+       .attr("r", 3)
+       .transition()
+       .duration(500)
+
+
+       d3.selectAll("circle").on("mouseover", function(d) {
+         d3.select(this)
+         .append("title")
+         .text(function(d){
+          return "Price: "+d.Price3+" \n";
+        })
+        .append("title")
+        .text(function(d){
+         return "Points: "+d.Popularity3;
+       })
+        });
+
+        //Create X axis
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(0," + (h - padding) + ")")
+          .call(xAxis);
+
+        //Create Y axis
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(" + padding + ",0)")
+          .call(yAxis);
+
+          svg.append("text")
+          .attr("text-anchor", "end")
+          .attr("x", 260)
+          .attr("y", 290)
+          .text("Price");
+
+          svg.append("text")
+      .attr("y", 150)
+      .attr("x",20)
+      .style("text-anchor", "middle")
+      .text("Points");
+}
