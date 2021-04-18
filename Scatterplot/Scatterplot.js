@@ -21,6 +21,17 @@ function select_operator(operator, data) {
 	}
 }
 
+function remove_operator(operator) {
+	if (operator == "PointsAndPrice") {
+		remove_Points_Price();
+	} else if (operator == "PointsAndPopularity") {
+		remove_Points_Popularity();
+	}
+  else if (operator == "PriceAndPopularity") {
+	  remove_Price_Popularity();
+	}
+}
+
 
 function presentPointsAndPrice  (data) {
 	var dataset = data;
@@ -55,6 +66,8 @@ function presentPointsAndPrice  (data) {
        .data(dataset)
        .enter()
        .append("circle")
+       .transition()
+       .duration(1000)
        .attr("cx", function(d) {
           return xScale(d.Price1);
        })
@@ -62,8 +75,7 @@ function presentPointsAndPrice  (data) {
           return yScale(d.Points1);
        })
        .attr("r", 3)
-       .transition()
-       .duration(500)
+
 
 
        d3.selectAll("circle").on("mouseover", function(d) {
@@ -103,6 +115,9 @@ function presentPointsAndPrice  (data) {
       .text("Points");
 }
 
+function remove_Points_Price() {
+	d3.select("#app").remove();
+}
 
 
 function presentPointsAndPopularity(data) {
@@ -138,6 +153,8 @@ function presentPointsAndPopularity(data) {
        .data(dataset)
        .enter()
        .append("circle")
+       .transition()
+       .duration(1000)
        .attr("cx", function(d) {
           return xScale(d.Popularity2);
        })
@@ -145,8 +162,7 @@ function presentPointsAndPopularity(data) {
           return yScale(d.Points2);
        })
        .attr("r", 3)
-       .transition()
-       .duration(500)
+
 
 
        d3.selectAll("circle").on("mouseover", function(d) {
@@ -177,13 +193,17 @@ function presentPointsAndPopularity(data) {
           .attr("text-anchor", "end")
           .attr("x", 260)
           .attr("y", 290)
-          .text("Price");
+          .text("Popularity");
 
           svg.append("text")
       .attr("y", 150)
       .attr("x",20)
       .style("text-anchor", "middle")
       .text("Points");
+}
+
+function remove_Points_Popularity() {
+	d3.select("#app").remove();
 }
 
 function presentPriceAndPopularity(data){
@@ -219,6 +239,8 @@ function presentPriceAndPopularity(data){
        .data(dataset)
        .enter()
        .append("circle")
+       .transition()
+       .duration(1000)
        .attr("cx", function(d) {
           return xScale(d.Price3);
        })
@@ -226,8 +248,7 @@ function presentPriceAndPopularity(data){
           return yScale(d.Popularity3);
        })
        .attr("r", 3)
-       .transition()
-       .duration(500)
+
 
 
        d3.selectAll("circle").on("mouseover", function(d) {
@@ -264,5 +285,9 @@ function presentPriceAndPopularity(data){
       .attr("y", 150)
       .attr("x",20)
       .style("text-anchor", "middle")
-      .text("Points");
+      .text("Popularity");
+}
+
+function remove_Price_Popularity() {
+	d3.select("#app").remove();
 }
