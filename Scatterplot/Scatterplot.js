@@ -34,20 +34,20 @@ function remove_operator(operator) {
 
 
 function presentPointsAndPrice  (data) {
-	var dataset = data;
-	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+	var dataset = data.slice(0,21);
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300).attr("id","app");
 
   xScale = d3.scaleLinear()
            .domain([
-            d3.min(dataset, function(d) { return d.Price1; }),
-            d3.max(dataset, function(d) { return d.Price1; })
+            d3.min(dataset, function(d) { return d.Points1; }),
+            d3.max(dataset, function(d) { return d.Points1; })
           ])
            .range([padding, w - padding]);
 
   yScale = d3.scaleLinear()
            .domain([
-            d3.min(dataset, function(d) { return d.Points1; }),
-            d3.max(dataset, function(d) { return d.Points1; })
+            d3.min(dataset, function(d) { return d.Price1; }),
+            d3.max(dataset, function(d) { return d.Price1; })
           ])
            .range([h - padding, padding]);
 
@@ -69,10 +69,10 @@ function presentPointsAndPrice  (data) {
        .transition()
        .duration(1000)
        .attr("cx", function(d) {
-          return xScale(d.Price1);
+          return xScale(d.Points1);
        })
        .attr("cy", function(d) {
-          return yScale(d.Points1);
+          return yScale(d.Price1);
        })
        .attr("r", 3)
 
@@ -82,11 +82,11 @@ function presentPointsAndPrice  (data) {
          d3.select(this)
          .append("title")
          .text(function(d){
-          return "Price: "+d.Price1+" \n";
+          return "Price: "+d.Points1+" \n";
         })
         .append("title")
         .text(function(d){
-         return "Points: "+d.Points1;
+         return "Points: "+d.Price1;
        })
         });
 
@@ -105,14 +105,14 @@ function presentPointsAndPrice  (data) {
           svg.append("text")
           .attr("text-anchor", "end")
           .attr("x", 260)
-          .attr("y", 290)
-          .text("Price");
+          .attr("y", 240)
+          .text("Points");
 
           svg.append("text")
       .attr("y", 150)
-      .attr("x",20)
+      .attr("x",35)
       .style("text-anchor", "middle")
-      .text("Points");
+      .text("Price");
 }
 
 function remove_Points_Price() {
@@ -121,20 +121,20 @@ function remove_Points_Price() {
 
 
 function presentPointsAndPopularity(data) {
-  var dataset = data;
-	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+  var dataset = data.slice(0,21);
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300).attr("id","app");;
 
   xScale = d3.scaleLinear()
            .domain([
-            d3.min(dataset, function(d) { return d.Popularity2; }),
-            d3.max(dataset, function(d) { return d.Popularity2; })
+            d3.min(dataset, function(d) { return d.Points2; }),
+            d3.max(dataset, function(d) { return d.Points2; })
           ])
            .range([padding, w - padding]);
 
   yScale = d3.scaleLinear()
            .domain([
-            d3.min(dataset, function(d) { return d.Points2; }),
-            d3.max(dataset, function(d) { return d.Points2; })
+            d3.min(dataset, function(d) { return d.Popularity2; }),
+            d3.max(dataset, function(d) { return d.Popularity2; })
           ])
            .range([h - padding, padding]);
 
@@ -156,10 +156,10 @@ function presentPointsAndPopularity(data) {
        .transition()
        .duration(1000)
        .attr("cx", function(d) {
-          return xScale(d.Popularity2);
+          return xScale(d.Points2);
        })
        .attr("cy", function(d) {
-          return yScale(d.Points2);
+          return yScale(d.Popularity2);
        })
        .attr("r", 3)
 
@@ -169,11 +169,11 @@ function presentPointsAndPopularity(data) {
          d3.select(this)
          .append("title")
          .text(function(d){
-          return "Price: "+d.Popularity2+" \n";
+          return "Price: "+d.Points2+" \n";
         })
         .append("title")
         .text(function(d){
-         return "Points: "+d.Points2;
+         return "Points: "+d.Popularity2;
        })
         });
 
@@ -192,14 +192,14 @@ function presentPointsAndPopularity(data) {
           svg.append("text")
           .attr("text-anchor", "end")
           .attr("x", 260)
-          .attr("y", 290)
-          .text("Popularity");
+          .attr("y", 240)
+          .text("Points");
 
           svg.append("text")
       .attr("y", 150)
-      .attr("x",20)
+      .attr("x",35)
       .style("text-anchor", "middle")
-      .text("Points");
+      .text("Popularity");
 }
 
 function remove_Points_Popularity() {
@@ -208,7 +208,7 @@ function remove_Points_Popularity() {
 
 function presentPriceAndPopularity(data){
   var dataset = data;
-	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300).attr("id","app");;
 
   xScale = d3.scaleLinear()
            .domain([
@@ -278,12 +278,12 @@ function presentPriceAndPopularity(data){
           svg.append("text")
           .attr("text-anchor", "end")
           .attr("x", 260)
-          .attr("y", 290)
+          .attr("y", 240)
           .text("Price");
 
           svg.append("text")
       .attr("y", 150)
-      .attr("x",20)
+      .attr("x",35)
       .style("text-anchor", "middle")
       .text("Popularity");
 }
