@@ -1,101 +1,101 @@
-﻿Category,Popularity,,Country,Produce
-Pinot Noir,13272,,US,54504
-Chardonnay,11753,,France,22093
-Cabernet Sauvignon,9472,,Italy,19540
-Red Blend,8946,,Spain,6645
-Bordeaux-style Red Blend,6914,,Portugal,5691
-Riesling,5189,,Chile,4472
-Sauvignon Blanc,4967,,Argentina,3800
-Syrah,4142,,Austria,3345
-Rosé,3564,,Australia,2329
-Merlot,3102,,Germany,2165
-Nebbiolo,2803,,New Zealand,1419
-Zinfandel,2714,,South Africa,1401
-Sangiovese,2707,,Israel,505
-Malbec,2652,,Greece,466
-Portuguese Red,2466,,Canada,257
-White Blend,2360,,Hungary,146
-Sparkling Blend,2153,,Bulgaria,141
-Tempranillo,1810,,Romania,120
-Rhône-style Red Blend,1471,,Uruguay,109
-Pinot Gris,1455,,Turkey,90
-Champagne Blend,1396,,Slovenia,87
-Cabernet Franc,1353,,Georgia,86
-Grüner Veltliner,1345,,England,74
-Portuguese White,1159,,Croatia,73
-Bordeaux-style White Blend,1066,,Mexico,70
-Pinot Grigio,1051,,Moldova,59
-Gamay,1025,,Brazil,52
-Gewürztraminer,1012,,Lebanon,35
-Viognier,996,,Morocco,28
-Shiraz,836,,Peru,16
-Petite Sirah,770,,Ukraine,14
-Sangiovese Grosso,751,,Serbia,12
-Barbera,721,,Czech Republic,12
-Glera,709,,Macedonia,12
-Port,668,,Cyprus,11
-Grenache,651,,India,9
-"Corvina, Rondinella, Molinara",619,,Switzerland,7
-Chenin Blanc,591,,Luxembourg,6
-Tempranillo Blend,588,,Bosnia and Herzegovina,2
-Carmenère,575,,Armenia,2
-Albariño,477,,Egypt,1
-Pinot Blanc,442,,Slovakia,1
-Rhône-style White Blend,425,,Bordeaux-style Red Blend,1
-Nero d'Avola,365,,China,1
-Aglianico,359,,,
-Moscato,358,,,
-Garnacha,326,,,
-Sauvignon,316,,,
-Verdejo,294,,,
-Melon,280,,,
-Garganega,270,,,
-Petit Verdot,269,,,
-Meritage,260,,,
-Torrontés,250,,,
-Prosecco,236,,,
-Vermentino,232,,,
-Blaufränkisch,232,,,
-Mourvèdre,229,,,
-Primitivo,222,,,
-Montepulciano,215,,,
-Zweigelt,209,,,
-Touriga Nacional,200,,,
-Pinot Nero,181,,,
-G-S-M,181,,,
-Dolcetto,180,,,
-Tannat,178,,,
-Mencía,178,,,
-Roussanne,168,,,
-Tinta de Toro,166,,,
-Verdicchio,164,,,
-Turbiana,157,,,
-Pinot Bianco,154,,,
-Fiano,151,,,
-Monastrell,147,,,
-Vernaccia,138,,,
-Pinotage,137,,,
-Alvarinho,137,,,
-Grillo,137,,,
-Sémillon,135,,,
-Muscat,132,,,
-Grenache Blanc,131,,,
-Friulano,122,,,
-Greco,121,,,
-Nerello Mascalese,117,,,
-Cabernet Sauvignon-Merlot,117,,,
-Viura,107,,,
-Bonarda,105,,,
-Sagrantino,104,,,
-Rosato,103,,,
-Cabernet Sauvignon-Syrah,102,,,
-Sherry,100,,,
-Tinto Fino,100,,,
-Malbec-Merlot,96,,,
-St. Laurent,92,,,
-Falanghina,89,,,
-Ribolla Gialla,87,,,
-Arneis,86,,,
-Godello,81,,,
-Negroamaro,80,,,
-Lagrein,80,,,
+﻿Flavor,Popularity_f,,Category,Popularity_c,Popularity_price,Popularity_rating,,Country,Produce,,Variety_p,Price,Price_rating,,Variety_r,Rating,Rating_price,,Taster,Taster_count,Taster_point,,Variety_pr,Ratio
+Pinot Noir,13272,,Reserve,2009,36.95,87.98,,US,54504,,90-year Old Tawny,1000,97,,Cristal Vintage Brut,100,250,,Other Tasters,26249,87.79,,UnWineD,21.5
+Chardonnay,11753,,Estate,1322,34.55,88.34,,France,22093,,Hill of Grace,800,93.5,,Cerretalto,100,270,,Roger Voss,25514,88.71,,Flirty Bird,20.88
+Cabernet Sauvignon,9472,,Reserva,1259,20.74,87.14,,Italy,19540,,Clos du Mesnil Brut Blanc de Blancs,800,99,,Barca-Velha,100,450,,Michael Schachner,15134,86.91,,Fizz,17.4
+Red Blend,8946,,Riserva,698,60.76,89.66,,Spain,6645,,El Perer,770,96,,Vargellas Vinhas Velhas Vintage,99,268,,Kerin O’Keefe,10776,88.87,,Mini,17.2
+Bordeaux-style Red Blend,6914,,Barrel sample,627,93.5,91.45,,Portugal,5691,,Kiedrich Gräfenberg Trockenbeerenauslese,730.67,96.33,,Sorì Tildìn,99,440,,Virginie Boone,9537,89.21,,Toutalga Tinto,17
+Riesling,5189,,Estate Grown,625,34.06,88.23,,Chile,4472,,Le Montrachet,630,96,,Nacional Vintage,99,622.5,,Paul Gregutt,9532,89.08,,Twin Valley,16.8
+Sauvignon Blanc,4967,,Brut,513,26.39,87.32,,Argentina,3800,,Nacional Vintage,622.5,99,,Elevation 1147 Estate,99,150,,Matt Kettmann,6332,90.01,,Twin Valley White,16.6
+Syrah,4142,,Dry,413,17.27,87.46,,Austria,3345,,Unico Reserva Especial,600,92,,Cuvée Constance 500ml,99,159,,Joe Czerwinski,5147,88.54,,Gato Negro,14.86
+Rosé,3564,,Estate Bottled,343,27.78,87.5,,Australia,2329,,Grange,596.25,97.25,,Clos du Mesnil Brut Blanc de Blancs,99,800,,Sean P. Sullivan,4966,88.76,,Vinha do Poeta,14.5
+Merlot,3102,,Crianza,343,19.88,87.23,,Germany,2165,,Cà d'Morissio Riserva,595,99,,Cà d'Morissio Riserva,99,595,,Anna Lee C. Iijima,4415,88.42,,Rubicone,14.5
+Nebbiolo,2803,,Vieilles Vignes,309,34.9,89.06,,New Zealand,1419,,Very Old Single Harvest,588,95,,Barca Velha,99,426,,Jim Gordon,4177,88.63,,Xairel Branco,14.33
+Zinfandel,2714,,Brut Rosé,276,42.98,88.31,,South Africa,1401,,Cristal Brut Rosé,554.67,96,,The Relic,98,135,,Anne Krebiehl MW,3685,90.56,,Soft,14.33
+Sangiovese,2707,,Gran Reserva,261,25.76,87.74,,Israel,505,,Les Quatre Journaux,551.67,94,,Sperss,98,255,,Lauren Buzzeo,1834,87.74,,Casaleiro Colheita Seleccionada,14.33
+Malbec,2652,,Tradition,238,21.78,87.47,,Greece,466,,Chambertin Clos de Bèze Grand Cru,525,96,,Rare,98,325,,Susan Kostrzewa,1085,86.61,,Xairel Tinto,14.17
+Portuguese Red,2466,,Old Vine,222,23.8,87.5,,Canada,257,,Colheita White,515.5,91.5,,Nello Riserva,98,120,,Mike DeSimone,514,89.1,,Tegole,14.17
+White Blend,2360,,Extra Dry,204,16.1,86.25,,Hungary,146,,Musigny,510,96,,Le Méal Ermitage,98,150,,Jeff Jenssen,491,88.32,,Terras de Felgueiras,14.17
+Sparkling Blend,2153,,Rosé of,172,21.01,88.37,,Bulgaria,141,,Hattenheimer Wisselbrunnen Beernauslese Gold Cap,510,90,,Insignia 40th Vintage Estate Grown,98,250,,Alexander Peartree,415,85.86,,Serradayres Colheita Seleccionada,14.17
+Tempranillo,1810,,Rosé,166,21.64,86.98,,Romania,120,,Erbacher Marcobrunn Trockenbeerenauslese,500,93,,Joy! Estate Bottled,98,250,,Carrie Dykes,139,86.4,,Jacarando Rosé Extra Brut,14.17
+Rhône-style Red Blend,1471,,Réserve,153,19.46,87.7,,Uruguay,109,,Double Plus Estate Grown,500,93,,Eisele,98,275,,Fiona Adams,27,86.89,,Brado Branco,14.17
+Pinot Gris,1455,,Single Vineyard,131,30.05,87.93,,Turkey,90,,Cuvée da Capo,500,93,,Capela Vintage,98,127,,Christina Pickard,6,87.83,,Albero Bobal,14.17
+Champagne Blend,1396,,Vintage,128,73.27,91.09,,Slovenia,87,,Porto Envelhecido em Casco Colheita,499,95,,Beckstoffer Las Piedras,98,250,,,,,,Sweet Red Table Wine,14
+Cabernet Franc,1353,,Estate Reserve,125,35.65,88.22,,Georgia,86,,Reserva Velho,495,93,,Beckstoffer Dr. Crane,98,250,,,,,,Sara Bee,14
+Grüner Veltliner,1345,,Bien Nacido Vineyard,121,42.64,91.16,,England,74,,Trockenbeerenauslese Goldlack,486,97,,Royal City,97.75,125,,,,,,Amphora,14
+Portuguese White,1159,,Late Harvest,112,24.1,87.71,,Croatia,73,,Vigneto di Monte Lodoletta,485,95.5,,The Traveler,97.5,152.5,,,,,,Terras d'El Rei,13.83
+Bordeaux-style White Blend,1066,,Unoaked,111,19.18,87.22,,Mexico,70,,Sorì Tildin,475,92.5,,En Chamberlin Vineyard,97.5,75,,,,,,Colheita Seleccionada Tinto,13.83
+Pinot Grigio,1051,,Classic,111,16.97,87.85,,Moldova,59,,Cristal Rosé Brut,469,95,,Cuvée Sir Winston Churchill Brut,97.5,305,,,,,,Alandra Rosé,13.83
+Gamay,1025,,Barrel Select,106,32.9,87.98,,Brazil,52,,Costa Russi,466.25,94.5,,Grange,97.25,596.25,,,,,,Xairel,13.67
+Gewürztraminer,1012,,Late Bottled Vintage,99,25.16,89.15,,Lebanon,35,,Sorì San Lorenzo,461.67,96,,Masseto,97.2,418,,,,,,Sauvignon de Seguin,13.54
+Viognier,996,,Blanc de Blancs Brut,96,64.29,89.75,,Morocco,28,,MC III Brut,450,97,,Widowmaker En Chamberlin Vineyard,97,90,,,,,,Condesa de Sarabella,13.5
+Shiraz,836,,Old Vines,95,25.4,88.36,,Peru,16,,Le Desir,450,97,,Wehlener Sonnenuhr Trockenbeerenauslese Erste Lage,97,440,,,,,,Bridão Classico Branco,13.32
+Petite Sirah,770,,Stillwater Creek Vineyard,90,27.24,89.27,,Ukraine,14,,Clon de la Familia,450,95.5,,Zwischen den Seen Nummer 10 Trockenbeerenauslese,97,125,,,,,,Vilacetinho,13.31
+Sangiovese Grosso,751,,Estate Vineyard,90,41.67,89.34,,Serbia,12,,Barca-Velha,450,100,,West Slope Estate,97,100,,,,,,Gatão,13.08
+Barbera,721,,Barrel Fermented,90,21.05,86.86,,Czech Republic,12,,Serrig Schloss Saarsteiner Eiswein,448,95,,Trockenbeerenauslese Nummer 5 Zwischen den Seen,97,95,,,,,,Brado,12.99
+Glera,709,,Cuvée Prestige,89,24.94,88.29,,Macedonia,12,,Wehlener Sonnenuhr Trockenbeerenauslese,440,96,,Trockenbeerenauslese Goldlack,97,486,,,,,,Trinca Espinhas Alvarinho-Trajadura,12.57
+Port,668,,Signature,85,32.39,88.87,,Cyprus,11,,Wehlener Sonnenuhr Trockenbeerenauslese Erste Lage,440,97,,Zwischen den Seen Nummer 11 Trockenbeerenauslese,97,103,,,,,,Primavera Branco,12.57
+Grenache,651,,Grand Reserve,85,24.44,87.19,,India,9,,Wehlener Sonnenuhr Vat 59 Trockenbeerenauslese,440,94,,Stone Terraces Vintage,97,200,,,,,,A. Henriques Tinto,12.57
+"Corvina, Rondinella, Molinara",619,,Blanc de Blancs,84,34.42,89.1,,Switzerland,7,,Sorì Tildìn,440,99,,The Widowmaker,97,80,,,,,,Value Series,12.43
+Chenin Blanc,591,,Tinto,80,18.87,87.29,,Luxembourg,6,,Roger Rose Vineyard,426.2,89.8,,Six White Horses,97,75,,,,,,Tradicão,12.43
+Tempranillo Blend,588,,Private Reserve,78,43.75,87.21,,Bosnia and Herzegovina,2,,Barca Velha,426,99,,Select Private Reserve,97,150,,,,,,Primavera Reserva,12.43
+Carmenère,575,,Semi-Dry,77,15.09,86.87,,Armenia,2,,Masseto,418,97.2,,Richards Family Vineyard,97,90,,,,,,Portada Winemaker's Selection Tinto,12.43
+Albariño,477,,Collection,77,31.65,87.45,,Egypt,1,,Tinus,417,95,,Plus Game Ranch Single Vineyard Selection,97,150,,,,,,Murray-Darling,12.43
+Pinot Blanc,442,,Prestige,75,21.91,87.89,,Slovakia,1,,Morogues,413,87.5,,Moon Select,97,70,,,,,,La Garrigue,12.43
+Rhône-style White Blend,425,,Vintner's Reserve,72,19.85,87.35,,Bordeaux-style Red Blend,1,,Unico,404,91.2,,Ornellaia,97,178.75,,,,,,Frunza,12.43
+Nero d'Avola,365,,Limited Release,71,37.7,88.03,,China,1,,Monzinger Frühlingsplätzchen Trockenbeerenauslese,400,94,,Nouvelle Vague Nummer 9 Trockenbeerenauslese,97,90,,,,,,Berço do Infante,12.43
+Aglianico,359,,Made With Organic Grapes,70,14.2,86.56,,,,,JG's Joie du Vin,400,96,,Monprivato,97,169,,,,,,Alb Demisec,12.43
+Moscato,358,,Roble,68,15.25,85.66,,,,,Clos de Vougeot,400,92,,Padrone Proprietary Red Wine,97,110,,,,,,Dreamfish,12.39
+Garnacha,326,,Dutton Ranch,67,41.51,90.28,,,,,Fleur de Champagne Blanc de Blancs Brut,399,91,,MC III Brut,97,450,,,,,,Bridão Clássico,12.36
+Sauvignon,316,,Trocken,66,23.89,89.36,,,,,Essencia,396.5,92.5,,Le Mesnil Blanc de Blancs,97,350,,,,,,Santola,12.31
+Verdejo,294,,Rosella's Vineyard,65,48.94,90.65,,,,,Grand Siècle Alexandra Brut Rosé,390,95,,Le Mont Première Trie Moelleux,97,69,,,,,,Vinho Atlântico,12.29
+Melon,280,,Stagecoach Vineyard,63,74.44,90.16,,,,,Blanc de Blancs Vintage Brut,390,96,,Le Desir,97,450,,,,,,Terres d'Artagnan Cuvée Excellence,12.29
+Garganega,270,,Sangiacomo Vineyard,61,42.28,89.52,,,,,Le Mesnil Blanc de Blancs Brut,388.25,96.75,,Joy!,97,147,,,,,,Protocolo Blanco,12.29
+Petit Verdot,269,,Ciel du Cheval Vineyard,61,41.03,90.3,,,,,Abtsberg Beerenauslese Grosse Lage,388,96,,J. Schram 50 Late Disgorged,97,175,,,,,,Le Réveil,12.29
+Meritage,260,,Cannubi,61,90.54,91.89,,,,,La Muse,386.67,95.67,,Joy! Blanc de Blancs,97,179,,,,,,Hand Harvested Estate Bottled,12.29
+Torrontés,250,,Durell Vineyard,60,50.97,90.2,,,,,Kiedrich Gräfenberg Eiswein,370.5,93,,Grande Cuvée Trockenbeerenauslese Nummer 6 Nouvelle Vague,97,95,,,,,,Dalva Reserva Branco,12.29
+Prosecco,236,,Proprietor's Reserve,59,26.66,85.9,,,,,Echézeaux,370,95,,Deidesheimer Hohenmorgen Trockenbeerenauslese - 375 ml,97,245,,,,,,Caiado Tinto,12.29
+Vermentino,232,,Colheita,57,43,88.65,,,,,Viñedo Chadwick,365,92.25,,Diane Cobb Coastlands Vineyard,97,85,,,,,,Coreto Branco,12.26
+Blaufränkisch,232,,Premium,56,19.26,87.39,,,,,La Richemonne Cuvée Ultra Premier Cru,365,94,,Cuvée Authentique Les Clos Grand Cru,97,95,,,,,,Dreambird,12.22
+Mourvèdre,229,,Gap's Crown Vineyard,56,57.63,91.64,,,,,Petit Monts Premier Cru,357,95,,Bussia 90 Dì,97,80,,,,,,Convento da Vila,12.21
+Primitivo,222,,Bussia,54,66.55,90.28,,,,,Redigaffi,356.25,93.25,,Bernkasteler Badstube Trockenbeerenauslese,97,250,,,,,,Conde de Alicante,12.21
+Montepulciano,215,,Bacigalupi Vineyard,54,48.59,89.54,,,,,Trockenbeerenauslese - 375 ml,350,90,,by Montes Aurelio's Selection,97,90,,,,,,Cal Monte da Cal,12.21
+Zweigelt,209,,Rosé Brut,52,49.53,88.38,,,,,The Surrealist,350,90,,Bien Nacido Vineyard 25th Anniversary X-Block The Good Nacido,97,100,,,,,,Scarlet Five Wildcreek Canyon,12.14
+Touriga Nacional,200,,Paragon Vineyard,52,18.13,89.25,,,,,Pessac-Lï¿½ognan,350,94,,Black Cougar Ridge,97,75,,,,,,Refreshingly Sweet,12.14
+Pinot Nero,181,,Blanc de Noirs,50,26.84,88.18,,,,,Le Mesnil Blanc de Blancs,350,97,,Casta Diva Fondillón Sweet,97,88,,,,,,Quinta dos Bons Ventos,12.14
+G-S-M,181,,Boushey Vineyard,50,33.08,89.62,,,,,Legend Vintage,350,95,,Brea Vigna Cà Mia,97,96,,,,,,Monte do Enforcado Tinto,12.14
+Dolcetto,180,,Special Reserve,49,31.96,87.76,,,,,La Mattonara Riserva,350,92,,Aleste,97,170,,,,,,Oceanus,12.14
+Tannat,178,,Estate Vineyards,48,37.92,89.1,,,,,Erdener Prälat Goldkap Beerenauslese,350,94,,30th Anniversary Cuvée Burt Williams' Morning Dew Ranch,97,125,,,,,,Ópera Prima,12.14
+Mencía,178,,Proprietary,46,51.17,89.26,,,,,Dom Pérignon Brut Rosé,350,95,,Andelmonde,97,95,,,,,,Flor de Maio Mayflower,12.14
+Roussanne,168,,Garys' Vineyard,46,52.13,90.8,,,,,Casteller Schlossberg Eiswein,350,94,,30th Anniversary Cuvée Estate Vineyard,97,125,,,,,,Domino,12.14
+Tinta de Toro,166,,Soberanes Vineyard,45,51.4,91.2,,,,,Lodovico,349.5,95.5,,325 Anniversary,97,40,,,,,,Deliciously Sweet,12.14
+Verdicchio,164,,Shea Vineyard,45,54.58,91.42,,,,,Kiedrich Gräfenberg Beerenauslese,345.67,94.67,,6 Puttonyos Aszú Gold Label,97,80,,,,,,Coudel Mor Classico,12.14
+Turbiana,157,,Selección,44,22.82,87.48,,,,,Ruppertsberger Reiterpfad Trockenbeerenauslese - 375 ml,333,95,,90-year Old Tawny,97,1000,,,,,,Convento da Vila Branco,12.14
+Pinot Bianco,154,,La Encantada Vineyard,44,51.95,91.32,,,,,Domaine du Clos Frantin,331.25,92.6,,Le Mesnil Blanc de Blancs Brut,96.75,388.25,,,,,,Cerejeiras Branco,12.14
+Fiano,151,,Rosso,43,25.51,88.42,,,,,Book 17 XVII,330,95,,IX Estate,96.5,290,,,,,,Cerejeiras Tinto,12.14
+Monastrell,147,,White,42,18.39,86.1,,,,,The Bishop,325,95.5,,Family Estate Grown,96.5,175,,,,,,Babu,12.14
+Vernaccia,138,,Alpha,42,26.31,88.36,,,,,Rare,325,98,,Golden Mean,96.5,115,,,,,,Willow Springs,12.1
+Pinotage,137,,Unfiltered,41,33.63,87.46,,,,,Prestigio Pago de las Solanas,325,91,,Cirsion,96.5,276.5,,,,,,Xadrez,12.07
+Alvarinho,137,,Sierra Madre Vineyard,41,41.54,90.37,,,,,La Joie,325,93.25,,16 Rows,96.5,150,,,,,,Plexus Tinto,12.07
+Grillo,137,,Cuvée Tradition,41,16.59,87.32,,,,,Hochheimer Kirchenstück Beerenauslese,323,95,,Sassicaia,96.43,223,,,,,,Protocolo,12.03
+Sémillon,135,,Winemaker's Reserve,40,37.08,87.35,,,,,La Combe d'Orveau Cuvée Ultra Premier Cru,320,94,,Kiedrich Gräfenberg Trockenbeerenauslese,96.33,730.67,,,,,,Coreto,12.03
+Muscat,132,,Sierra Mar Vineyard,40,49.03,90.58,,,,,Eszencia,320,96,,Two Birds Estate Grown,96,84,,,,,,Vinhas Altas,12
+Grenache Blanc,131,,Kabinett,40,18.64,88.98,,,,,Albori di Lampata,320,88,,Ürziger Würzgarten Auslese * * * Goldkap,96,53,,,,,,Vinea Tinto,12
+Friulano,122,,Brut Réserve,40,39.73,88.68,,,,,Cuvée Héritiers Latour,317.6,93.8,,Wit Reserve Estate,96,100,,,,,,Tre Venezie,12
+Greco,121,,Nouveau,39,11.78,85.41,,,,,Les Amoureuses Premier Cru,317.5,93.67,,Vignolo Riserva,96,116,,,,,,Tintico,12
+Nerello Mascalese,117,,Family Reserve,39,86.95,88.38,,,,,Trittenheimer Apotheke Beerenauslese,317,94,,Wehlener Sonnenuhr Trockenbeerenauslese Goldkap,96,49,,,,,,Steeple Jack,12
+Cabernet Sauvignon-Merlot,117,,Extra Brut,39,41.37,88.33,,,,,Viña El Pison,316.67,94.33,,Wedding Cuvée Estate Bottled,96,44,,,,,,Sustainable Agriculture Perlè,12
+Viura,107,,Reserva Branco,38,25.67,89.08,,,,,Hochheimer Domdechaney Trockenbeerenauslese Grosse Lage,316,96,,Widowmaker,96,70,,,,,,Riverboat Sweet White Wine,12
+Bonarda,105,,Les Clos Grand Cru,38,86.94,93.71,,,,,Herrenberg Eiswein 82,316,93,,Wehlener Sonnenuhr Beerenauslese Erste Lage,96,200,,,,,,Protocolo Rosado,12
+Sagrantino,104,,Grande Réserve,38,26.03,88.18,,,,,Chambertin,316,95,,Wehlener Sonnenuhr Trockenbeerenauslese,96,440,,,,,,Ravat 51,12
+Rosato,103,,Rosato,37,17.39,86.14,,,,,Cuvée Sir Winston Churchill Brut,305,97.5,,Woolsey Road Vineyard,96,65,,,,,,Penina,12
+Cabernet Sauvignon-Syrah,102,,Reserva Estate Bottled,37,11.92,85.76,,,,,Clos de Saint-Denis,304,95,,Zöbinger Heiligenstein Erste Lage Alte Reben Reserve,96,79,,,,,,Novo Mondo Colheita Seleccionada,12
+Sherry,100,,Limited Edition,37,35.12,88.27,,,,,Clos de la Roche,304,96,,XV,96,45,,,,,,Morande Pionero,12
+Tinto Fino,100,,Cold Creek Vineyard,37,25.81,89.3,,,,,Taita,300,93,,The Hustler,96,120,,,,,,Lello Rosé,12
+Malbec-Merlot,96,,Vendimia Seleccionada,36,24.79,87.42,,,,,Taita Wisdom in Wine Marchigue Vineyard,300,91,,Special Selected Late Harvest Botrytis,96,45,,,,,,Coudel Mor,12
+St. Laurent,92,,Seven Hills Vineyard,36,39.89,90.64,,,,,Single Harvest,300,94.67,,South River,96,68,,,,,,Coudel Mor Clássico,12
+Falanghina,89,,Red Wine,36,38.83,89.14,,,,,Per Sempre,300,89.75,,Stags Leap District,96,160,,,,,,Coreto Tinto,12
+Ribolla Gialla,87,,Grand Estates,36,11.69,87.56,,,,,Grand Siècle Cuvée Alexandra Rosé Brut,300,93,,The Creator Old Stones,96,60,,,,,,Alon Seasons Collection Blanco C,12
+Arneis,86,,Flood Family Vineyards,36,23.78,87.17,,,,,Few and Far Between Vineyard,300,94,,Stone Côte Vineyard,96,60,,,,,,Anjos de Portugal,12
+Godello,81,,Premier Cru,35,66,89.74,,,,,Dizy Corne Bautray,300,95,,The Peake,96,150,,,,,,Wildcreek Canyon,11.93
+Negroamaro,80,,Les Collines Vineyard,35,32.91,88.8,,,,,Echézeaux du Dessus,300,95,,Sorì San Lorenzo,96,461.67,,,,,,Willow Springs White,11.92
+Lagrein,80,,Grand Vin,35,52.65,90,,,,,10 Anni Riserva,300,87,,The Standish Single Vineyard,96,135,,,,,,Terre di Sicilia,11.86

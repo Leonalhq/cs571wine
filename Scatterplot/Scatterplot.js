@@ -35,7 +35,7 @@ function remove_operator(operator) {
 
 function presentPointsAndPrice  (data) {
 	var dataset = data;
-	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300);
+	var svg = d3.select("body").append("svg").attr("width", 500).attr("height", 300)
 
   xScale = d3.scaleLinear()
            .domain([
