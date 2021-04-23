@@ -1,0 +1,187 @@
+<html>
+<body>
+
+<h1>Map</h1>
+
+<button id="PointButton" type="button" onclick=pointFunction()>Point</button>
+<button id="PriceButton" type="button" onclick=priceFunction()>Price</button>
+
+ 
+</body>
+</html>
+
+
+
+
+ 
+
+
+
+<!DOCTYPE html>
+<meta charset="utf-8">
+<div id="tooltip" class="hidden">
+	<p><span id="value">100</span></p>
+</div>
+
+	<style type="text/css">
+
+	text {
+		font-family: sans-serif;
+		font-size: 12px;
+		fill: white;
+	}
+            
+    path:hover{
+        stroke: black;
+    }
+            
+    #tooltip {
+		position: absolute;
+		width: 80px;
+		height: auto;
+		padding: 10px;
+		background-color: white;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		-webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+		-moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+		pointer-events: none;
+                
+	}
+			
+	#tooltip.hidden {
+		display: none;
+	}
+			
+	#tooltip p {
+		margin: 0;
+		font-family: sans-serif;
+		font-size: 16px;
+		line-height: 20px;
+	}
+
+	</style>
+<body>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+<script src="trip_data.js"></script>
+<script src="https://unpkg.com/topojson-client@3"></script>
+<script>
+
+
+var width = window.innerWidth,
+    height = window.innerHeight,
+    centered,
+    clicked_point;
+
+var projection = d3.geoMercator()
+    .translate([width / 2.2, height / 1.5]);
+
+var plane_path = d3.geoPath()
+        .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("class", "map")
+	.attr("width", width * 0.95)
+	.attr("height", height * 0.95);
+
+
+
+
+
+
+function pointFunction() { 
+d3.select("body").select("svg").select("g").remove();    
+var g = svg.append("g");
+var path = d3.geoPath()
+    .projection(projection);
+
+d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topology) {
+    g.selectAll("path")
+		.data(topojson.feature(topology, topology.objects.countries)
+			.features)
+		.enter()
+		.append("path")
+		.attr("d", path) 
+		.attr('fill', colorCountryPoint) 
+		.on("mouseover", function(event, d) {
+			let pos = d3.select(this).node().getBoundingClientRect();
+			d3.select("#tooltip")
+			.style("left", `${pos['x']}px`)
+			.style("top", `${(window.pageYOffset  + pos['y'] - 50)}px`)	
+			.text(textCountryPoint(event.id));
+			
+			//Show the tooltip
+			d3.select("#tooltip").classed("hidden", false);
+		}) 
+	
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.1 * height).attr("r", 5).style("fill", "#54278f")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.13 * height).attr("r", 5).style("fill", "#756bb1")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.16 * height).attr("r", 5).style("fill", "#9e9ac8")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.19 * height).attr("r", 5).style("fill", "#cbc9e2")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.22 * height).attr("r", 5).style("fill", "#f2f0f7")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.25 * height).attr("r", 5).style("fill", "#808080")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.1 * height).text("Point >= 90").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.13 * height).text("Point >= 88").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.16 * height).text("Point >= 86").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.19 * height).text("Point >= 84").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.22 * height).text("Point >= 80").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.25 * height).text("Point unavailable").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+
+		.on("mouseout", function() {
+			d3.select("#tooltip").classed("hidden", true);
+		});
+	
+      
+	});
+}
+ 
+function priceFunction() {
+	d3.select("body").select("svg").select("g").remove();
+		
+	var g = svg.append("g"); 
+	var path = d3.geoPath()
+		.projection(projection);
+
+	d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, topology) {
+		g.selectAll("path")
+			.data(topojson.feature(topology, topology.objects.countries).features)
+			.enter()
+			.append("path")
+			.attr("d", path) 
+			.attr('fill', colorCountryPrice) 
+			.on("mouseover", function(event, d) {
+				let pos = d3.select(this).node().getBoundingClientRect();
+				d3.select("#tooltip")
+				.style("left", `${pos['x']}px`)
+				.style("top", `${(window.pageYOffset  + pos['y'] - 50)}px`)	
+				.text(textCountryPrice(event.id));
+				d3.select("#tooltip").classed("hidden", false); 
+						 
+			}) 
+	
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.1 * height).attr("r", 5).style("fill", "#08519c")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.13 * height).attr("r", 5).style("fill", "#3182bd")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.16 * height).attr("r", 5).style("fill", "#6baed6")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.19 * height).attr("r", 5).style("fill", "#bdd7e7")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.22 * height).attr("r", 5).style("fill", "#eff3ff")
+		g.append("circle").attr("cx",0.1 * width).attr("cy",0.25 * height).attr("r", 5).style("fill", "#808080")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.1 * height).text("Price >= 34").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.13 * height).text("Price >= 28").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.16 * height).text("Price >= 22").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.19 * height).text("Price >= 16").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.22 * height).text("Price >= 10").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		g.append("text").attr("x", 0.1 * width + 8).attr("y", 0.25 * height).text("Price unavailable").style("font-size", "10px").attr("alignment-baseline","middle").style("fill", "black")
+		
+		.on("mouseout", function() {
+			d3.select("#tooltip").classed("hidden", true);
+		});
+ });
+}
+ 
+ 
+</script>
+</body>
+</html>
+
