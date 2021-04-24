@@ -1023,7 +1023,7 @@ function presentVarietyAndPP(data) {
 				}
 				//rescale the x- y-axis
 				xScale.domain(d3.range(dataset.length));
-				yScale.domain([d3.min(dataset, function (d) { return d.rating; })-0.1, d3.max(dataset, function (d) { return d.rating; })]);
+				yScale.domain([d3.min(dataset, function (d) { return d.ratio; })-0.1, d3.max(dataset, function (d) { return d.ratio; })]);
 				container.select('.xaxis')
 					.transition()
 					.duration(1500)
@@ -1048,16 +1048,16 @@ function presentVarietyAndPP(data) {
 					.transition()
 					.duration(1000)
 					.delay(function (d, i) { return 50 * i; })
-					.attr('y', function (d, i) { return yScale(d.rating) + MARGIN.TOP; })
+					.attr('y', function (d, i) { return yScale(d.ratio) + MARGIN.TOP; })
 					.attr('height', function (d) {
-						return SVG_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM - yScale(d.rating);
+						return SVG_HEIGHT - MARGIN.TOP - MARGIN.BOTTOM - yScale(d.ratio);
 					})
 				d3.selectAll('rect')
 					.on("mouseover", function (d) {
 						d3.select(this)
 							.append("title")
 							.text(function (d) {
-								return "top-" + d.top + " \nvariety: " + d.variety_pr + " \navg price_performance_ratio: " + (d.rating / d.rating_price).toFixed(2);
+								return "top-" + d.top + " \nvariety: " + d.variety_pr + " \navg price_performance_ratio: " + d.ratio;
 							});
 					})
 				operation = new_operation;
