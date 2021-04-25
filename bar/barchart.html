@@ -1,56 +1,122 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>D3: Stack layout stacked bar chart</title>
-		<script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
-		<script type="text/javascript" src="./barchart.js"></script>
-		<style type="text/css">
-			rect:hover{
-				fill: red;
+<head>
+	<meta charset="utf-8">
+	<title>D3: Stack layout stacked bar chart</title>
+	<script type="text/javascript" src="https://d3js.org/d3.v6.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/d3-v6-tip@1.0.6/build/d3-v6-tip.js"></script>
+	<script type="text/javascript" src="./barchart.js"></script>
+	<style type="text/css">
+		.bar:hover {
+			fill: red;
+		}
+
+		.bar {
+			fill: orange;
+		}
+
+		.bar.bar2 {
+			fill: orangered;
+		}
+
+		.bar.bar2:hover {
+			fill: red;
+		}
+
+		body {
+			text-align: center;
+			font: 10px sans-serif;
+		}
+
+        .x.text,
+		.y.text {
+            font-size: 12px;
+            font-family: Georgia, "Times New Roman", Serif;
+			font-weight: bold;
+        }
+
+		.axis path,
+		.axis line {
+			fill: none;
+			stroke: #000;
+			shape-rendering: crispEdges;
+		}
+
+		.x.axis path {
+			display: none;
+		}
+
+		.d3-tip {
+			line-height: 1;
+			font-weight: bold;
+			padding: 1px 12px 1px 12px;
+			background: rgba(0,0,0,0.8);
+			color: #fff;
+			border-radius: 2px;
+		}
+
+            .d3-tip:after {
+                box-sizing: border-box;
+                display: inline;
+                font-size: 10px;
+                width: 100%;
+                line-height: 1;
+				color: rgba(0,0,0,0.8);
+				content: "\25BC";
+				position: absolute;
+				text-align: center;
+            }
+
+			.d3-tip.n:after {
+				margin: -1px 0 0 0;
+				top: 100%;
+				left: 0;
 			}
-			.bar{
-				fill: green;
-			}
-		</style>
-	</head>
-	<body>
+        .label {
+            margin-top: 40px;
+        }
+		.top{
+			margin-top: 40px;
+		}
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+		const SVG_HEIGHT = 350;
+		const SVG_WIDTH = 720;
+		const MARGIN = { TOP: 30, RIGHT: 50, LEFT: 55, BOTTOM: 30 };
+
+		d3.csv('../dataset/barchart.csv', loadData)
+			.then(function (data) {
+				var operator = "CategoryAndPopularity"
+				select_operator(operator, data);
+
+				d3.select("#operation")
+					.on("click", function () {
+						var new_operator = this.value;
+						if (new_operator != operator) {
+							remove_operator(operator);
+							select_operator(new_operator, data);
+							operator = new_operator;
+						}
+
+					})
+
+			});
+	</script>
+	
+	<div class="label">
 		<select id="operation">
 			<option value="CategoryAndPopularity">Present Category And Popularity</option>
 			<option value="FlavorAndPopularity">Present Flavor And Popularity</option>
 			<option value="CountryAndProduce">Present Country And Produce</option>
 			<option value="VarietyAndPrice">Present Variety And Price</option>
 			<option value="VarietyAndRating">Present Variety And Rating</option>
-			<option value="TasterAnalysis">Present Taster Information</option>
 			<option value="VarietyAndPP">Present Variety And Price Performance</option>
+			<option value="TasterAnalysis">Present Taster Anayisis Information</option>
 		</select>
+	</div>
 
-		<script type="text/javascript">
-			const SVG_HEIGHT = 400;
-			const SVG_WIDTH = 500;
-			const MARGIN = { TOP: 30, RIGHT: 30, LEFT: 50, BOTTOM: 30 };
-
-			d3.csv('../dataset/barchart.csv', loadData)
-				.then(function (data) {
-					var operator = "CategoryAndPopularity"
-					select_operator(operator, data);
-
-                    d3.select("#operation")
-						.on("click", function () {
-							var new_operator = this.value;
-							if (new_operator != operator) {
-                                remove_operator(operator);
-                                select_operator(new_operator, data);
-                                operator = new_operator;
-                            }
-                            
-                        })
-
-				});
-
-
-						
-						
-		</script>
-	</body>
+</body>
 </html>
