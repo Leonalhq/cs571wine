@@ -228,9 +228,11 @@ function remove_Points_Popularity() {
 d3.select("#app").remove();
 }
 
-function presentPriceAndPopularity(data){
+function presentPriceAndPopularity(data) {
+    var status = 'all';
     var dataset = data;
-    var svg = d3.select("#plot").append("svg").attr("width", width).attr("height", height).attr("id","app");;
+    var svg = d3.select("#plot").append("svg").attr("width", width).attr("height", height).attr("id", "app");
+    var scale = d3.select("#buttonposition").append("button").text("scale").attr("id", "scale");
 
     xScale = d3.scaleLinear()
         .domain([
@@ -279,17 +281,17 @@ function presentPriceAndPopularity(data){
 
     //Create X axis
     svg.append("g")
-        .attr("class", "axis")
+        .attr("class", "axis x")
         .attr("transform", "translate(0," + (h - padding) + ")")
         .call(xAxis);
 
     //Create Y axis
     svg.append("g")
-        .attr("class", "axis")
+        .attr("class", "axis y")
         .attr("transform", "translate(" + (padding) + ",0)")
         .call(yAxis);
 
-    svg.selectAll("circle")
+    var points = svg.selectAll("circle")
         .data(dataset)
         .enter()
         .append("circle")
@@ -317,8 +319,38 @@ function presentPriceAndPopularity(data){
         .attr("x", 60)
         .style("text-anchor", "middle")
         .text("Popularity");
+
+    d3.select("#scale")
+        .on("click", function () {
+            if (status == 'all') {
+                dataset = data.slice(0, 70);
+                status = 'scaled';
+            } else {
+                dataset = data;
+                status = 'all';
+            }
+            xScale.domain([d3.min(dataset, function (d) { return d.Price3; }), d3.max(dataset, function (d) { return d.Price3; })]);
+            yScale.domain([d3.min(dataset, function (d) { return d.Popularity3; }), d3.max(dataset, function (d) { return d.Popularity3; })]);
+            svg.select(".axis.x").transition().duration(1000).call(xAxis);
+            svg.select(".axis.y").transition().duration(1000).call(yAxis);
+            points = svg.selectAll("circle")
+                .transition()
+                .duration(1500)
+                .attr("cx", function (d) {
+                    return xScale(d.Price3);
+                })
+                .attr("cy", function (d) {
+                    return yScale(d.Popularity3);
+                })
+                .attr("opacity", function (d) {
+                    if (xScale(d.Price3) > w-padding) {
+                        return 0;
+                    }
+                });
+        });
 }
 
 function remove_Price_Popularity() {
-d3.select("#app").remove();
+    d3.select("#app").remove();
+    d3.select("#scale").remove();
 }
