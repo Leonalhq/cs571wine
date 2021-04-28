@@ -58,8 +58,8 @@ var dataset = data.slice(0,21);
         .attr('class', 'd3-tip')
         .offset([-10,0])
         .html(function (EVENT, d) {
-            return "<p><strong>Point: </strong> <span style='color:blue'>" + d.Points1 + "</span></p>\
-					<p><strong>Price: </strong><span style='color:blue'>"+ d.Price1 + "</span></p>";
+            return "<p><strong>Point: </strong> <span style='color:skyblue'>" + d.Points1 + "</span></p>\
+					<p><strong>Price: </strong><span style='color:skyblue'>"+ d.Price1 + "</span></p>";
         });
 
     svg.call(tip);
