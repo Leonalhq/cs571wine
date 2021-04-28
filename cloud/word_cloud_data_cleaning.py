@@ -13,6 +13,7 @@ variety = set()
 df = pd.read_csv("winemag-data_first150k.csv")
 country_selected = 'US' 
 
+
         
 all_variety_list = ['Pinot Noir', 'Chardonnay', 'Cabernet Sauvignon', 
                     'Red Blend', 'Bordeaux-style Red Blend', 'Riesling', 
@@ -97,7 +98,7 @@ sherry_yellow = {"sherry","oxidized"}
 
 pungent_green1 = { "cool",	"menthol", "hot",	"alcohol"} 
 
-chemical = {"chemical", "pungent", "sulfur",  "dioxide", "ethanol",  "acetic", "acids", "acid",  "ethyl",
+chemical = {"chemical", "pungent", "sulfur",  "dioxide", "ethanol",  "acetic", "acids", "acid", "acidity" , "ethyl",
             "acetate",  "burnt",  "cabbage", "skunk",  "garlic",  "gas", "mercaptain", "hydrogen", "sugary",
             "sulfide", "rubbery", "petroleum", "diesel", "kerosene", "plastic", "tar"}
 
@@ -120,10 +121,10 @@ veggie = {"veggie","vegetable","fresh", "cut", "green",  "grass" ,"bell", "peppe
 
 
 all_variety_list_description = {}
-for wine_name in Portugal_variety_list:
+for wine_name in all_variety_list: 
     variety_review = {}
     for index, row in df.iterrows(): 
-        if row['variety'] == wine_name and row['country'] == country_selected: 
+        if row['variety'] == wine_name: 
             sentence = row['description'].lower().replace(',', '').replace('.', '').replace('?', '').replace('%', '').replace(':', '').replace('\'', '').split(' ')
             for word in sentence: 
                 if word not in filter_word: 
@@ -181,5 +182,5 @@ for wine_name in Portugal_variety_list:
 
 
 import json
-with open('US.json', 'w') as json_file: 
+with open('1.json', 'w') as json_file: 
     json.dump(all_variety_list_description, json_file)
