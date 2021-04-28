@@ -28,6 +28,10 @@
             margin-left: 125px;
             font-family: Courier New, Courier, monospace;
         }
+        
+        #wine_name{
+            text-anchor: end;
+        }
     </style>
 </head>
 <body>
@@ -102,6 +106,12 @@
                     .attr("height", height + margin.bottom)
                     .attr("fill", "whitesmoke")
                     .attr("stroke", "black")
+                
+                svg.append("text")
+                    .attr("id", "wine_name")
+                    .attr("x", width - 10)
+                    .attr("y", height)
+                    .text(keys[begin]);
 
                 var tip = d3.tip()
                     .attr('class', 'd3-tip')
@@ -200,6 +210,12 @@
                     .attr("height", height + margin.bottom)
                     .attr("fill", "whitesmoke")
                     .attr("stroke", "black")
+                
+                svg.append("text")
+                    .attr("id", "wine_name")
+                    .attr("x", width - 10)
+                    .attr("y", height)
+                    .text(keys[begin]);
 
                 var tip = d3.tip()
                     .attr('class', 'd3-tip')
