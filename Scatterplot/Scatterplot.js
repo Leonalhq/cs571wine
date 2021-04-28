@@ -154,8 +154,8 @@ function presentPointsAndPopularity(data) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (EVENT, d) {
-            return "<p><strong>Point: </strong> <span style='color:blue'>" + d.Points2 + "</span></p>\
-					<p><strong>Popularity: </strong><span style='color:blue'>"+ d.Popularity2 + "</span></p>";
+            return "<p><strong>Point: </strong> <span style='color:skyblue'>" + d.Points2 + "</span></p>\
+					<p><strong>Popularity: </strong><span style='color:skyblue'>"+ d.Popularity2 + "</span></p>";
         });
 
     svg.call(tip);
@@ -252,8 +252,8 @@ function presentPriceAndPopularity(data) {
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function (EVENT, d) {
-            return "<p><strong>Price: </strong> <span style='color:blue'>" + d.Price3 + "</span></p>\
-					<p><strong>Popularity: </strong><span style='color:blue'>"+ d.Popularity3 + "</span></p>";
+            return "<p><strong>Price: </strong> <span style='color:skyblue'>" + d.Price3 + "</span></p>\
+					<p><strong>Popularity: </strong><span style='color:skyblue'>"+ d.Popularity3 + "</span></p>";
         });
 
     svg.call(tip);
