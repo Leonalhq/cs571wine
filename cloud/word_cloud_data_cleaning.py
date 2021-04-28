@@ -11,8 +11,7 @@ top_n_word = 45
 variety = set()
 
 df = pd.read_csv("winemag-data_first150k.csv")
-country_selected = 'US' 
-
+#country_selected = 'Australia' 
 
         
 all_variety_list = ['Pinot Noir', 'Chardonnay', 'Cabernet Sauvignon', 
@@ -26,21 +25,23 @@ US_variety_list = ['Pinot Noir', 'Cabernet Sauvignon', 'Chardonnay', 'Syrah',
                    'Bordeaux-style Red Blend', 'Riesling', 'Cabernet Franc',
                    'Rosé', 'Pinot Gris', 'Viognier', 'Petite Sirah', 'Rhône-style Red Blend',
                    'Sparkling Blend', 'White Blend', 'Malbec', 'Grenache', 'Sangiovese', 'Gewürztraminer']
+
 Spain_variety_list = ['Tempranillo', 'Red Blend', 'Tempranillo Blend', 'Sparkling Blend',
                       'Albariño', 'Garnacha', 'White Blend', 'Verdejo', 'Mencía',
                       'Tinta de Toro', 'Rosé', 'Monastrell', 'Viura', 'Tinto Fino', 'Sherry',
                       'Godello', 'Chardonnay', 'Rosado', 'Cabernet Sauvignon',
-                      'Tempranillo-Cabernet Sauvignon', 'Garnacha Blanca', 'Moscatel']
+                      'Tempranillo-Cabernet Sauvignon', 'Garnacha Blanca', 'Moscatel','vinho']
+
 Portugal_variety_list = ['Portuguese Red', 'Portuguese White', 'Port', 'Rosé', 'Touriga Nacional',
                          'Alvarinho', 'Arinto', 'Portuguese Sparkling', 'Syrah', 'Alicante Bouschet',
                          'Encruzado', 'Fernão Pires', 'Castelão', 'Verdelho', 'Loureiro', 'Baga',
                          'Touriga Nacional-Cabernet Sauvignon', 'Trincadeira', 'Sauvignon Blanc',
-                         'Pinot Noir', 'Chardonnay', 'Touriga Nacional Blend']
+                         'Pinot Noir', 'Chardonnay', 'Touriga Nacional Blend','touriga','merlot','moscato']
 Italy_variety_list = ['Red Blend', 'Nebbiolo', 'Sangiovese', 'White Blend', 'Sangiovese Grosso',
                       'Glera', 'Corvina, Rondinella, Molinara', 'Pinot Grigio', 'Barbera',
                       'Pinot Bianco', 'Sparkling Blend', 'Aglianico', 'Chardonnay', 'Sauvignon',
                       'Garganega', 'Prosecco', 'Montepulciano', 'Moscato', 'Pinot Nero',
-                      'Verdicchio', 'Vermentino', 'Turbiana', ]
+                      'Verdicchio', 'Vermentino', 'Turbiana' ]
 France_variety_list = ['Bordeaux-style Red Blend', 'Chardonnay', 'Pinot Noir', 'Rosé',
                        'Champagne Blend', 'Bordeaux-style White Blend', 'Gamay',
                        'Sauvignon Blanc', 'Rhône-style Red Blend', 'Riesling', 'Gewürztraminer',
@@ -52,7 +53,7 @@ Australia_variety_list = ['Shiraz', 'Chardonnay', 'Cabernet Sauvignon', 'Rieslin
                           'Shiraz-Viognier', 'Sparkling Blend', 'Viognier',
                           'Shiraz-Cabernet Sauvignon', 'Rosé', 'Bordeaux-style Red Blend',
                           'Pinot Grigio', 'G-S-M', 'Sauvignon Blanc-Semillon', 'Sémillon',
-                          'Merlot', 'White Blend', 'Syrah', 'Shiraz-Grenache']
+                          'Merlot', 'White Blend', 'Syrah', 'Shiraz-Grenache','apéritif']
 
 
 ## filter all the word not want
@@ -60,7 +61,7 @@ filter_word = {'and', 'the', 'of', 'a', 'with', 'flavors', 'is', 'no', "on",
                'in', 'this', 'wine', 'to','but','This', 'from', 'too', 'if', 'then',
                'on', 'for', 'that', 'into', 'has', 'good', 'shows', 'its', 'have',
                'at', 'well', 'mouth', 'offers', 'like', 'an', 'now', 'are', 'as', 'too',
-               'nose', 'it', 'by', 'some', 'theres', 'more', 'up', 'very', 'not', 'or', 
+               'nose', 'it', 'by', 'some', 'there\'s', 'more', 'up', 'very', 'not', 'or', 
                'notes', 'finish', 'fine', 'drink', 'years', 'nice', 'be', 'just', 'structure', 
                'while', 'price', 'bit', 'little', 'you', 'out', 'me', 'us', 'texture', 'through', 
                'over', 'all',  'will', 'style', 'touch', 'opens', 'made', 'sample', 'there', 'structured', 
@@ -70,8 +71,19 @@ filter_word = {'and', 'the', 'of', 'a', 'with', 'flavors', 'is', 'no', "on",
                'still', 'feel', 'mouthfeel', 'palate', 'ripe', 'close', 'slightly', 'hints', 'best', 'one', '100', 
                'weight', 'pair', 'heres', 'flavor', 'along', 'much', 'hard', 'used', 'extra', 'provide', 'main', 
                'informal', 'times', 'cab', 'great', 'thats', 'hint', 'almost', 'time', 'almost', '(one',
-               'only', 'mostly', 'only', 'could', 'about', 'doesnt', 'year', 'somewhat', 'gives', 'until', 
-               'both', 'own', 'really', 'de', 'what', 'can', 'go', '9', 'does'}
+               'only', 'mostly', 'only', 'could', 'about', 'doesn\'t', 'year', 'somewhat', 'gives', 'until', 
+               'both', 'own', 'really', 'de', 'what', 'can', 'go', '9', 'does', 'showing', 'rounded', 
+			   'open', 'edge', 'round', 'already', 'rounded', 'packed', 'final',
+			   'aging','giving','accents','yellow','final', 'peel','franc', 'tight', 
+			   'concentrated','white', 'asian','been', 'full', 'residual',"flavored",'imported', 
+			   'medium', 'balanced','inc','attractive','rounded', 'subtle', 'though','verde','skin', 
+			   'attractive', 'impressive', 'bottle', 'easy', 'local', 'certainly', 'dominates', 'months', 
+			   'few','bottle','screwcap', 'powerhouse','next', '30', '10', 'may', 'consumed', 'broad', 
+			   'round','soon','without','vineyards', "2004", 'fruit—even','now-2015','plenty','approachable',
+			   'complex','fruit—even','bone','vally','becoming','2015','layered','side','warm-climate',
+			   'cool-climate','plum-','help','hallmark','continues'} 
+
+
 
 
 fruit_purple = {"sauvignon","cabernet", "citrus", "grapefruit", "lemon", "berry", "blackberry",
@@ -83,11 +95,12 @@ fruit_purple = {"sauvignon","cabernet", "citrus", "grapefruit", "lemon", "berry"
             'sangiovese', 'sangioveses', 'mourvèdre', 'grenache', 'counoise', 'cinsault','watermelon',
             'peaches', 'apples', 'limes', 'strawberries', 'lemons', 'fig', 'zinfandel','roussanne',
                 'traminer', 'gewurztraminer', 'corvina', "nectarine", "viura", "citrusy", "macabeo",
-                "verdejo", "monastrell", "godello", "moscatel", "gewurz"}
+                "verdejo", "monastrell", "godello", "moscatel", "gewurz",'Decanter', "juicy",'arinto',
+				'zest','lychee','alvarinho','plums','juice','damson','lemony','tropical-fruit-driven','mango'}
 
 spice_orange = {"spice", "aromas", "spicy", "licorice", "anise", "black", "pepper cloves", "stalky",
                 'spices', 'cassis', 'peppery', 'cinnamon', 'black-fruit', 'candied', 'stemmy',
-                "aromatic"}
+                "Aromatic","thyme",'peppers'}
 
 floral_pink = {"aromas",  "floral", "geranium",  "violet",  "rose" 'rosé',  "orange",
                "blossom", 'clove', 'honeysuckle', 'bouquet'}
@@ -96,27 +109,30 @@ microbiological_red = { "microbiological","scents", 'yeast',"yeasty", "leesy" , 
 
 sherry_yellow = {"sherry","oxidized"}
 
-pungent_green1 = { "cool",	"menthol", "hot",	"alcohol"} 
+pungent_green1 = { "cool",	"menthol", "hot","alcohol"} 
 
 chemical = {"chemical", "pungent", "sulfur",  "dioxide", "ethanol",  "acetic", "acids", "acid", "acidity" , "ethyl",
             "acetate",  "burnt",  "cabbage", "skunk",  "garlic",  "gas", "mercaptain", "hydrogen", "sugary",
-            "sulfide", "rubbery", "petroleum", "diesel", "kerosene", "plastic", "tar"}
+            "sulfide", "rubbery", "petroleum", "diesel", "kerosene", "plastic", "tar",'tannins','tannic','sweet','acidity'}
 
-earthy = {"moldy", "earthy", "mushroom", "dusty", 'earth', 'minerality', 'mineral', "minerally"}
+earthy = {"moldy", "earthy", "mushroom", "dusty", 'earth', 'minerality', 'mineral', "minerally", "petrol"}
 
-wood = {"wood","woody", "burned", "smoky", "burnt", "toast", "coffee", "phenolic", 'espresso',"resiny",
+wood = {"wood","woody", "burned", "smoky", "burnt", "toast", "coffee", "phenolic", 'espresso',"resiny","mocha",
         "medicinal", "phenolic", "bacon", "resinous", "oak", 'oaky', "cedar",  "vanilla", 'cocoa',
-        "rubber"}
+        "Rubber",'dry', 'soil', "leather",'wood-aged'}
 
 cameral = {"cameral","caramel", "honey", "butterscotch", "diacetyl" ,"butter", "marmalade",
-           "soy", "sauce", "chocolate", "molasses", 'sugar', "buttery"}
+           "soy", "sauce", "chocolate", "molasses", 'sugar', "buttery", "mousse"}
 
 nut = {	"nut","nutty", "walnut", "hazelnut", "almond" }
 
 veggie = {"veggie","vegetable","fresh", "cut", "green",  "grass" ,"bell", "pepper", "eucalyptus", 
           "mint", "canned", "cooked",  "green", "beans", "sandalwood", "tomato",
-          "asparagus", "olive", "black", "olive", "artichoke", "dried", "hay", "straw", "tea", "tobacco", 'herbal', 
-          'grassy', 'herb', 'chard', 'herbs', 'lemongrass', 'riesling', "papaya"}
+          "asparagus", "olive", "black", "olive", "artichoke", "dried", "hay", "straw", "tea", 
+		  "tobacco", 'herbal', 'grassy', 'herb', 'chard', 'herbs', 'lemongrass', 
+		  'riesling', "papaya", "herbaceous", "botrytis"}
+
+
 
 
 
@@ -182,5 +198,5 @@ for wine_name in all_variety_list:
 
 
 import json
-with open('1.json', 'w') as json_file: 
+with open('all.json', 'w') as json_file: 
     json.dump(all_variety_list_description, json_file)
