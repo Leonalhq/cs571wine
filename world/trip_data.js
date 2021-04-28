@@ -8,6 +8,8 @@ d3.csv("../dataset/result.csv").get(function (data) {
 			'CountryName': data[i]['Country Name'],
 			'count': data[i]['count'],
 			'point': data[i]['points'],
+			'point_std': data[i]['points_std'],
+			'price_std': data[i]['price_std'],
 			'price': data[i]['price'],
 			'winery': data[i]['winery'],
 			'wine1': data[i]['wine1'],
@@ -56,7 +58,7 @@ function colorCountryPoint(country) {
 
 	} else {
 	
-		return colorMap_point(0.1);
+		return "whitesmoke";
 	}
     
 };
@@ -64,8 +66,9 @@ function colorCountryPoint(country) {
 function textCountryPoint(id){
 	id_int = parseInt(id)
 	if (dataset[id_int] != undefined){
-		point_str = (Math.round(dataset[id_int]['point']*100)/100).toString()
-		return dataset[id_int]['CountryName'] +' \n' + 'Point: ' + point_str
+		point_str = (Math.round(dataset[id_int]['point'] * 100) / 100).toString()
+		point_std = dataset[id_int]['point_std'];
+		return dataset[id_int]['CountryName'] + ' \nAvg Point: ' + point_str + '\nStd: ' + point_std;
 	}
 	return 'NA';
 };
@@ -94,7 +97,7 @@ function colorCountryPrice(country) {
 
 	} else {
 	
-		return colorMap_price(0.1);
+		return "whitesmoke";
 	}
     
 };
@@ -102,8 +105,9 @@ function colorCountryPrice(country) {
 function textCountryPrice(id){
 	id_int = parseInt(id)
 	if (dataset[id_int] != undefined){
-		point_str = (Math.round(dataset[id_int]['price']*100)/100).toString()
-		return dataset[id_int]['CountryName'] +': \n' + '$' + point_str
+		price_str = (Math.round(dataset[id_int]['price'] * 100) / 100).toString()
+		price_std = dataset[id_int]['price_std'];
+		return dataset[id_int]['CountryName'] + ' \n' + '$' + price_str + '\nStd: ' + price_std;
 	}
 	return 'NA'
 };
@@ -140,7 +144,8 @@ function colorCountryCount(country) {
 		}
 
 	} else {
-		return colorMap_count(0.1);
+		//return colorMap_count(0.1);
+		return "whitesmoke";
 	}
 
 };

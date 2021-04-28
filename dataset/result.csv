@@ -1,46 +1,46 @@
-﻿Country Name,count,winery,points,price,countrycode,wine1,wine2,wine3
-US,62139,5336,87.81720015,33.6538084,840,Reserve,Estate,Old Vine
-Spain,8160,1421,86.63872549,27.04852941,724,Crianza,Reserva,Gran Reserva
-France,14785,3825,88.60331417,45.61988502,250,Barrel sample,Vieilles Vignes,Brut Rosé
-Italy,18784,2917,88.44500639,37.54791312,380,Riserva,Extra Dry,Brut
-New Zealand,3070,279,87.54267101,24.1732899,554,Single Vineyard,Reserve,Cellar Selection
-Bulgaria,77,24,85.46753247,11.54545455,100,Veni Vidi Vici,Reserve,Imperial
-Argentina,5587,507,86.00107392,20.79488097,32,Reserva,Reserve,Estate
-Australia,4894,464,87.88148754,31.25847977,36,Reserve,Art Series,Old Vine
-Portugal,4176,424,88.17672414,26.33261494,620,Reserva,Vintage,Colheita
-Israel,610,47,87.1557377,31.30491803,376,Reserve,Kosher,Yarden
-South Africa,2237,290,87.2114439,21.13053196,710,Reserve,Bergkelder Selection,Fusion V
-Greece,872,96,86.10321101,21.74770642,300,Château Julia,Amethystos,Ovilos
-Chile,5766,296,86.29812695,19.34477974,152,Reserva,Gran Reserva,Reserve
-Morocco,12,1,88.16666667,18.83333333,504,Médallion,Un-Oaked,Moroccan
-Romania,139,17,84.92086331,16.39568345,642,Dreambird,La Umbra,Vine in Flames
-Germany,2347,251,88.61056668,39.01107797,276,Trocken,Kabinett,Dry
-Canada,194,44,88.22164948,34.62886598,124,Icewine,Reserve,Oldfield Series
-Moldova,71,11,84.71830986,15.36619718,498,Via Etulia Reserve,D'Or,Golden Land Dry
-Hungary,230,19,87.30434783,44.20434783,348,Dry,Aszú 5 Puttonyos,Cuvée 113
-Austria,2483,225,89.19089811,31.19210632,40,Reserve,Classic,Terrassen
-Croatia,83,31,86.4939759,23.10843373,191,Alba,Graševina,Adriatico
-Slovenia,81,29,88.17283951,28.0617284,705,Cuvée,Fosilni Breg,Veliko
-India,8,1,87.625,13.875,356,Estate Bottled,Dindori Reserve,
-Turkey,50,15,88.14,25.8,792,Reserve,Pendore,Prestige
-Macedonia,16,3,84.8125,15.3125,807,Macedon,Alexandar,Veritas
-Lebanon,37,5,85.7027027,25.43243243,422,Altitudes,Gaston Hochar,Musar Jeune
-Serbia,14,3,87.71428571,24.28571429,688,Margus Margi,?upska,Sub Rosa
-Uruguay,85,19,84.54117647,25.84705882,858,Reserva,Identity,Reserve Collection
-Switzerland,4,4,87.25,26.5,756,Dôle des Monts,Les Murettes,Carato
-Albania,2,1,88,20,8,Rosé,,
-Bosnia and Herzegovina,4,1,84.75,12.75,70,Vranac,,
-Brazil,25,11,83.24,19.92,76,Agnus,Macaw,Intenso
-Cyprus,31,7,85.87096774,15.48387097,196,Ayios Andronicos,St. Nicholas,Agios Onoufrios
-Lithuania,8,3,84.25,10,440,Pasionado,Privada,Grande Reserve
-Japan,2,1,85,24,392,Alta,,
-China,3,1,82,20.33333333,156,Noble Dragon,,
-South Korea,4,2,81.5,13.5,410,Oak Cask,Altosur,
-Ukraine,5,4,84.6,13,804,Reserve,Semi-Dry,Rose
-England,8,17,92.75,47.5,826,Blanc de Blancs,Rosé,Cuvée Brut
-Mexico,63,25,84.76190476,29.0952381,484,Estate Bottled,Private Reserve,Viña Kristel
-Georgia,43,23,85.51162791,18.58139535,268,Tsinandali,Satrapezo,Vineyard Akhoebi
-Montenegro,2,1,82,10,499,Altosur,,
-Luxembourg,9,2,87,40.66666667,442,Wormeldange,Bech-Kleinmacher,Poll on Ice Crémant
-Slovakia,3,1,83.66666667,15.33333333,703,Paarl,,
-Czech Republic,6,2,85.83333333,18,203,Valle del Sol,Semi-Seco Blanco,Demi-Sec
+﻿Country Name,count,winery,points,price,points_std,price_std,countrycode,wine1,wine2,wine3
+US,62139,5336,87.81720015,33.6538084,3.12,27.09,840,Reserve,Estate,Old Vine
+Spain,8160,1421,86.63872549,27.04852941,3.07,34.66,724,Crianza,Reserva,Gran Reserva
+France,14785,3825,88.60331417,45.61988502,3.04,73.77,250,Barrel sample,Vieilles Vignes,Brut Rosé
+Italy,18784,2917,88.44500639,37.54791312,2.65,38.05,380,Riserva,Extra Dry,Brut
+New Zealand,3070,279,87.54267101,24.1732899,2.44,17.1,554,Single Vineyard,Reserve,Cellar Selection
+Bulgaria,77,24,85.46753247,11.54545455,2.08,9.51,100,Veni Vidi Vici,Reserve,Imperial
+Argentina,5587,507,86.00107392,20.79488097,3.18,23.43,32,Reserva,Reserve,Estate
+Australia,4894,464,87.88148754,31.25847977,2.99,49.05,36,Reserve,Art Series,Old Vine
+Portugal,4176,424,88.17672414,26.33261494,3,41.18,620,Reserva,Vintage,Colheita
+Israel,610,47,87.1557377,31.30491803,2.48,18.9,376,Reserve,Kosher,Yarden
+South Africa,2237,290,87.2114439,21.13053196,2.44,21.85,710,Reserve,Bergkelder Selection,Fusion V
+Greece,872,96,86.10321101,21.74770642,2.19,10.61,300,Château Julia,Amethystos,Ovilos
+Chile,5766,296,86.29812695,19.34477974,2.69,21.93,152,Reserva,Gran Reserva,Reserve
+Morocco,12,1,88.16666667,18.83333333,1.69,5.9,504,Médallion,Un-Oaked,Moroccan
+Romania,139,17,84.92086331,16.39568345,1.72,30.29,642,Dreambird,La Umbra,Vine in Flames
+Germany,2347,251,88.61056668,39.01107797,2.47,62.86,276,Trocken,Kabinett,Dry
+Canada,194,44,88.22164948,34.62886598,2.38,19.66,124,Icewine,Reserve,Oldfield Series
+Moldova,71,11,84.71830986,15.36619718,2.42,9.52,498,Via Etulia Reserve,D'Or,Golden Land Dry
+Hungary,230,19,87.30434783,44.20434783,2.69,69.45,348,Dry,Aszú 5 Puttonyos,Cuvée 113
+Austria,2483,225,89.19089811,31.19210632,2.5,27.22,40,Reserve,Classic,Terrassen
+Croatia,83,31,86.4939759,23.10843373,2.4,12.99,191,Alba,Graševina,Adriatico
+Slovenia,81,29,88.17283951,28.0617284,1.73,13.98,705,Cuvée,Fosilni Breg,Veliko
+India,8,1,87.625,13.875,1.72,3.64,356,Estate Bottled,Dindori Reserve,
+Turkey,50,15,88.14,25.8,1.98,13.8,792,Reserve,Pendore,Prestige
+Macedonia,16,3,84.8125,15.3125,1.75,1.44,807,Macedon,Alexandar,Veritas
+Lebanon,37,5,85.7027027,25.43243243,2.78,18.04,422,Altitudes,Gaston Hochar,Musar Jeune
+Serbia,14,3,87.71428571,24.28571429,1.31,10.26,688,Margus Margi,?upska,Sub Rosa
+Uruguay,85,19,84.54117647,25.84705882,2.69,18.48,858,Reserva,Identity,Reserve Collection
+Switzerland,4,4,87.25,26.5,2.51,70.06,756,Dôle des Monts,Les Murettes,Carato
+Albania,2,1,88,20,0.71,0.71,8,Rosé,,
+Bosnia and Herzegovina,4,1,84.75,12.75,2.12,0.71,70,Vranac,,
+Brazil,25,11,83.24,19.92,2.34,11.05,76,Agnus,Macaw,Intenso
+Cyprus,31,7,85.87096774,15.48387097,1.6,2.83,196,Ayios Andronicos,St. Nicholas,Agios Onoufrios
+Lithuania,8,3,84.25,10,1.46,8.92,440,Pasionado,Privada,Grande Reserve
+Japan,2,1,85,24,0,0,392,Alta,,
+China,3,1,85.9,20.33333333,0.46,3.24,156,Noble Dragon,,
+South Korea,4,2,81.5,13.5,0.42,0.71,410,Oak Cask,Altosur,
+Ukraine,5,4,84.6,13,1.59,2.19,804,Reserve,Semi-Dry,Rose
+England,8,17,92.75,47.5,1.84,14.86,826,Blanc de Blancs,Rosé,Cuvée Brut
+Mexico,63,25,84.76190476,29.0952381,2.72,17.76,484,Estate Bottled,Private Reserve,Viña Kristel
+Georgia,43,23,85.51162791,18.58139535,2.09,7.64,268,Tsinandali,Satrapezo,Vineyard Akhoebi
+Montenegro,2,1,82,10,1,0.71,499,Altosur,,
+Luxembourg,9,2,87,40.66666667,0.82,4.63,442,Wormeldange,Bech-Kleinmacher,Poll on Ice Crémant
+Slovakia,3,1,83.66666667,15.33333333,0.39,3.24,703,Paarl,,
+Czech Republic,6,2,85.83333333,18,2.25,3.24,203,Valle del Sol,Semi-Seco Blanco,Demi-Sec
