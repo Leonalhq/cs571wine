@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/d3-v6-tip@1.0.6/build/d3-v6-tip.js"></script>
+    <!-- Load d3-cloud -->
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+    <style type="text/css">
+
+        .d3-tip {
+            line-height: 1;
+            padding: 1px 12px 1px 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #fff;
+            border-radius: 2px;
+        }
+
+        p{
+            font-size: 16px;
+        }
+
+        #option{
+            margin-left: 125px;
+            font-family: Courier New, Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a div where the graph will take place -->
+    <div id="my_dataviz"></div>
+    <div id="option">
+        <nobr>country</nobr>
+        <select id="country" onchange="update()">
+            <option>all</option>
+            <option>US</option>
+            <option>Spain</option>
+            <option>France</option>
+            <option>Italy</option>
+            <option>Australia</option>
+            <option>Portugal</option>
+        </select>
+        <nobr>rank</nobr>
+        <input type="range" id="begin" name="begin" min="0" max="21" step="1" value="0" onchange="update()" />
+        <nobr>range</nobr>
+        <input type="range" id="range" name="range" min="1" max="22" step="1" value="1" onchange="update()" />
+    </div>
+    <script>
+
+        init();
+
+        function init() {
+            d3.json("all.json", function (error, data) {
+                var begin = 0;
+                var end = 1; //[begin, end)
+                var keys = Object.keys(data);
+                var theDist = data[keys[begin]];
+
+                var myWords = Object.keys(theDist);
+                var sum_count = 0;
+                for (var i = 0; i < myWords.length; i++) {
+                    sum_count += theDist[myWords[i]].count;
+                }
+                function getWords() {
+                    for (var i = begin + 1; i < end; i++) {
+                        var dist_index = Object.keys(data[keys[i]]);
+                        for (var j = 0; j < myWords.length; j++) {
+                            if (theDist.hasOwnProperty(dist_index[j])) {
+                                theDist[dist_index[j]].count += data[keys[i]][dist_index[j]].count;
+                                sum_count += data[keys[i]][dist_index[j]].count;
+                            } else {
+                                theDist[dist_index[j]] = data[keys[i]][dist_index[j]];
+                                sum_count += data[keys[i]][dist_index[j]].count;
+                            }
+                        }
+                    }
+                }
+                getWords();
+                myWords = Object.keys(theDist);
+
+                // set the dimensions and margins of the graph
+                var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+                    width = 800 - margin.left - margin.right,
+                    height = 500 - margin.top - margin.bottom;
+
+                // append the svg object to the body of the page
+                var svg = d3.select("#my_dataviz").append("svg").attr("id", "svgviz")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+                svg.append("rect")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", width)
+                    .attr("height", height + margin.bottom)
+                    .attr("fill", "whitesmoke")
+                    .attr("stroke", "black")
+
+                var tip = d3.tip()
+                    .attr('class', 'd3-tip')
+                    .offset([-10, 0])
+                    .html(function (d) {
+                        return "<p><strong><span style='color:" + theDist[d.text].color + "'>" + d.text + "</strong></span></p>";
+                    });
+                svg.call(tip);
+
+                // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+                var layout = d3.layout.cloud()
+                    .size([width, height + margin.bottom])
+                    .words(myWords.map(function (d) { return { text: d }; }))
+                    .padding(5)
+                    .fontSize(function (d) { return Math.sqrt(theDist[d.text].count / sum_count) * 200; })  // / sum_count * 1200; })
+                    .on("end", draw);
+                layout.start();
+
+                // This function takes the output of 'layout' above and draw the words
+                // Better not to touch it. To change parameters, play with the 'layout' variable above
+                function draw(words) {
+                    svg.append("g")
+                        .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                        .selectAll("text")
+                        .data(words)
+                        .enter().append("text")
+                        .style("font-size", function (d) { return d.size + "px"; })
+                        .style("font-family", "Impact")
+                        .style("fill", function (d) { return theDist[d.text].color; })
+                        .attr("text-anchor", "middle")
+                        .attr("transform", function (d) {
+                            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                        })
+                        .text(function (d) { return d.text; })
+                        .on("mouseover", tip.show)
+                        .on("mouseout", tip.hide);
+                }
+            });
+        }
+        
+
+        function update() {
+            var country = document.getElementById("country").value;
+            d3.json(country + ".json", function (error, data) {
+                console.log(data);
+                var begin = Number(document.getElementById("begin").value); // [0, 19]
+                var end = Number(document.getElementById("range").value) + begin; // [1, 20] [begin, end)
+                console.log("country: " + country + " begin: " + begin + " end: " + end);
+                if (end > 22) {
+                    console.log("out of range!");
+                    return; 
+                }
+                var keys = Object.keys(data);
+                var theDist = data[keys[begin]];
+
+                var myWords = Object.keys(theDist);
+                var sum_count = 0;
+                for (var i = 0; i < myWords.length; i++) {
+                    sum_count += theDist[myWords[i]].count;
+                }
+                function getWords() {
+                    for (var i = begin + 1; i < end; i++) {
+                        var dist_index = Object.keys(data[keys[i]]);
+                        for (var j = 0; j < myWords.length; j++) {
+                            if (theDist.hasOwnProperty(dist_index[j])) {
+                                theDist[dist_index[j]].count += data[keys[i]][dist_index[j]].count;
+                                sum_count += data[keys[i]][dist_index[j]].count;
+                            } else {
+                                theDist[dist_index[j]] = data[keys[i]][dist_index[j]];
+                                sum_count += data[keys[i]][dist_index[j]].count;
+                            }
+                        }
+                    }
+                }
+                getWords();
+                myWords = Object.keys(theDist);
+
+                d3.select("#svgviz").remove();
+                // set the dimensions and margins of the graph
+                var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+                    width = 800 - margin.left - margin.right,
+                    height = 500 - margin.top - margin.bottom;
+
+                // append the svg object to the body of the page
+                var svg = d3.select("#my_dataviz").append("svg").attr("id", "svgviz")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform",
+                        "translate(" + margin.left + "," + margin.top + ")");
+
+                svg.append("rect")
+                    .attr("x", 0)
+                    .attr("y", 0)
+                    .attr("width", width)
+                    .attr("height", height + margin.bottom)
+                    .attr("fill", "whitesmoke")
+                    .attr("stroke", "black")
+
+                var tip = d3.tip()
+                    .attr('class', 'd3-tip')
+                    .offset([-10, 0])
+                    .html(function (d) {
+                        return "<p><strong><span style='color:" + theDist[d.text].color + "'>" + d.text + "</strong></span></p>";
+                    });
+                svg.call(tip);
+
+                // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+                var layout = d3.layout.cloud()
+                    .size([width, height + margin.bottom])
+                    .words(myWords.map(function (d) { return { text: d }; }))
+                    .padding(5)
+                    .fontSize(function (d) { return Math.sqrt(theDist[d.text].count / sum_count) * 200; })  // / sum_count * 1200; })
+                    .on("end", draw);
+                layout.start();
+
+                // This function takes the output of 'layout' above and draw the words
+                // Better not to touch it. To change parameters, play with the 'layout' variable above
+                function draw(words) {
+                    svg.append("g")
+                        .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+                        .selectAll("text")
+                        .data(words)
+                        .enter().append("text")
+                        .style("font-size", function (d) { return d.size + "px"; })
+                        .style("font-family", "Impact")
+                        .style("fill", function (d) { return theDist[d.text].color; })
+                        .attr("text-anchor", "middle")
+                        .attr("transform", function (d) {
+                            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                        })
+                        .text(function (d) { return d.text; })
+                        .on("mouseover", tip.show)
+                        .on("mouseout", tip.hide);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

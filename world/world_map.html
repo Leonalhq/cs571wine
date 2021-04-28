@@ -7,6 +7,9 @@
     <button id="PriceButton" type="button" onclick=priceFunction()>Price</button>
     <button id="CountButton" type="button" onclick=countFunction()>Production</button>
 </div>
+<div>
+	<button id="reset" type="button" >Reset</button>
+</div>
  
 </body>
 </html>
@@ -19,10 +22,6 @@
 </div>
 
 	<style type="text/css">
-
-	botton{
-		width: 1000px;
-	}
 
 	text {
 		font-family: sans-serif;
@@ -68,13 +67,34 @@
       border: 3px solid rgb(0, 70, 128);
    }
    button{
-      font-size: 18px;
-      border: none;
-      padding:10px;
-      background-color: darkblue;
-      color:white;
+      font-size: 20%;
+	  font-weight: 900;
+	  text-align: center;
+	  vertical-align: middle;
+      border: inset 2em darkblue;
+	  border-radius: 2em;
+      padding:6px;
+      background-color: #f7f8f9;
+      color:#428bca;
 	  margin-left: auto;
   	  margin-right: auto;
+   }
+   #reset{
+	   width: 70px;  
+        padding:4px;  
+        background-color: darkblue;  
+        border-color: #357ebd;  
+        color: #fff;  
+        -moz-border-radius: 10px;  
+        -webkit-border-radius: 10px;  
+        border-radius: 10px; 
+        text-align: center;  
+        vertical-align: middle;  
+        border: 1px solid transparent;  
+        font-weight: 900;  
+        font-size:25%;
+		margin-left: 5%;
+		margin-top: 10px;
    }
 
 	</style>
@@ -85,163 +105,214 @@
 <script>
 
 
-var width = window.innerWidth,
-    height = window.innerHeight,
-    centered,
-    clicked_point;
+	var width = window.innerWidth,
+		height = window.innerHeight,
+		centered,
+		clicked_point;
 
-var projection = d3.geoMercator()
-    .translate([width / 2.2, height / 1.5]);
+	var projection = d3.geoMercator()
+		.translate([width / 2.2, height / 1.5]);
 
-var plane_path = d3.geoPath()
-        .projection(projection);
+	var plane_path = d3.geoPath()
+		.projection(projection);
 
-var svg = d3.select("body").append("svg")
-    .attr("class", "map")
-	.attr("width", width * 0.95)
-	.attr("height", height * 0.95);
+	var svg = d3.select("body").append("svg")
+		.attr("class", "map")
+		.attr("width", width * 0.95)
+		.attr("height", height * 0.95);
 
 	countFunction();
 
 
 
 
-function pointFunction() { 
-d3.select("body").select("svg").select("g").remove();    
-var g = svg.append("g");
-var path = d3.geoPath()
-    .projection(projection);
+	function pointFunction() {
+		d3.select("body").select("svg").select("g").remove();
 
-	d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function (error, topology) {
-		g.selectAll("path")
-			.data(topojson.feature(topology, topology.objects.countries)
-				.features)
-			.enter()
-			.append("path")
-			.attr("d", path)
-			.attr('fill', colorCountryPoint)
-			.on("mouseover", function (event, d) {
-				let pos = d3.select(this).node().getBoundingClientRect();
-				d3.select("#tooltip")
-					.style("left", `${pos['x']}px`)
-					.style("top", `${(window.pageYOffset + pos['y'] - 50)}px`)
-					.text(textCountryPoint(event.id));
+        const zoom = d3.zoom()
+            .scaleExtent([1, 32])
+			.on("zoom", zoomed);
 
-				//Show the tooltip
-				d3.select("#tooltip").classed("hidden", false);
-			})
-			.on("mouseout", function (event, d) {
-				d3.select("#tooltip").classed("hidden", true);
-			});
+		var g = svg.append("g");
+		var path = d3.geoPath()
+			.projection(projection);
 
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.1 * height).attr("r", 5).style("fill", colorMap_point(1));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.13 * height).attr("r", 5).style("fill", colorMap_point(0.8));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.16 * height).attr("r", 5).style("fill", colorMap_point(0.65));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.19 * height).attr("r", 5).style("fill", colorMap_point(0.5));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.22 * height).attr("r", 5).style("fill", colorMap_point(0.35));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.25 * height).attr("r", 5).style("fill", colorMap_point(0.2));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.28 * height).attr("r", 5).style("fill", colorMap_point(0.1));
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.1 * height).text("Point >= 90").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.13 * height).text("Point >= 88").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.16 * height).text("Point >= 86").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.19 * height).text("Point >= 84").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.22 * height).text("Point >= 82").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.25 * height).text("Point >= 80").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.28 * height).text("No data unavailable").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+		d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function (error, topology) {
+			g.selectAll("path")
+				.data(topojson.feature(topology, topology.objects.countries)
+					.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.attr('fill', colorCountryPoint)
+				.on("mouseover", function (event, d) {
+					let pos = d3.select(this).node().getBoundingClientRect();
+					d3.select("#tooltip")
+						.style("left", `${pos['x']}px`)
+						.style("top", `${(window.pageYOffset + pos['y'] - 50)}px`)
+						.text(textCountryPoint(event.id));
 
-	});
-}
- 
-function priceFunction() {
-	d3.select("body").select("svg").select("g").remove();
-		
-	var g = svg.append("g"); 
-	var path = d3.geoPath()
-		.projection(projection);
+					//Show the tooltip
+					d3.select("#tooltip").classed("hidden", false);
+				})
+				.on("mouseout", function (event, d) {
+					d3.select("#tooltip").classed("hidden", true);
+				});
 
-	d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function (error, topology) {
-		g.selectAll("path")
-			.data(topojson.feature(topology, topology.objects.countries).features)
-			.enter()
-			.append("path")
-			.attr("d", path)
-			.attr('fill', colorCountryPrice)
-			.on("mouseover", function (event, d) {
-				let pos = d3.select(this).node().getBoundingClientRect();
-				d3.select("#tooltip")
-					.style("left", `${pos['x']}px`)
-					.style("top", `${(window.pageYOffset + pos['y'] - 50)}px`)
-					.text(textCountryPrice(event.id));
-				d3.select("#tooltip").classed("hidden", false);
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.1 * height).attr("r", 5).style("fill", colorMap_point(1));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.13 * height).attr("r", 5).style("fill", colorMap_point(0.8));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.16 * height).attr("r", 5).style("fill", colorMap_point(0.65));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.19 * height).attr("r", 5).style("fill", colorMap_point(0.5));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.22 * height).attr("r", 5).style("fill", colorMap_point(0.35));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.25 * height).attr("r", 5).style("fill", colorMap_point(0.2));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.28 * height).attr("r", 5).style("fill", colorMap_point(0.1));
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.1 * height).text("Point >= 90").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.13 * height).text("Point >= 88").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.16 * height).text("Point >= 86").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.19 * height).text("Point >= 84").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.22 * height).text("Point >= 82").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.25 * height).text("Point >= 80").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.28 * height).text("No data unavailable").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+		});
 
-			})
-			.on("mouseout", function (event, d) {
-				d3.select("#tooltip").classed("hidden", true);
-			});
-
-		g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.1 * height).attr("r", 5).style("fill", colorMap_price(1));
-		g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.13 * height).attr("r", 5).style("fill", colorMap_price(0.8));
-		g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.16 * height).attr("r", 5).style("fill", colorMap_price(0.65));
-		g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.19 * height).attr("r", 5).style("fill", colorMap_price(0.5));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.22 * height).attr("r", 5).style("fill", colorMap_price(0.35));
-		g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.25 * height).attr("r", 5).style("fill", colorMap_price(0.2));
-        g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.28 * height).attr("r", 5).style("fill", colorMap_price(0.1));
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.1 * height).text("Price >= 45").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.13 * height).text("Price >= 40").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.16 * height).text("Price >= 35").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.19 * height).text("Price >= 30").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.22 * height).text("Price >= 20").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.25 * height).text("Price >= 10").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.28 * height).text("No data unavailable").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-
-
-	});
-
-}
-
-function countFunction() {
-    d3.select("body").select("svg").select("g").remove();
-
-    var g = svg.append("g");
-    var path = d3.geoPath()
-        .projection(projection);
-
-    d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function (error, topology) {
-        g.selectAll("path")
-            .data(topojson.feature(topology, topology.objects.countries).features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr('fill', colorCountryCount)
-            .on("mouseover", function (event, d) {
-                let pos = d3.select(this).node().getBoundingClientRect();
-                d3.select("#tooltip")
-                    .style("left", `${pos['x']}px`)
-                    .style("top", `${(window.pageYOffset + pos['y'] - 50)}px`)
-                    .text(textCountryCount(event.id));
-                d3.select("#tooltip").classed("hidden", false);
-
-            })
-            .on("mouseout", function (event, d) {
-                d3.select("#tooltip").classed("hidden", true);
-            });
-
-        for (var i = 1; i <= 10; i++) {
-            g.append("circle").attr("cx", 0.05 * width).attr("cy", (0.35 - i * 0.03) * height).attr("r", 5).style("fill", colorMap_count(0.1 * i));
+        function zoomed() {
+            g.attr("transform", d3.event.transform);
         }
-		g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.05 * height).text("Production >= 20000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.08 * height).text("Production >= 10000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.11 * height).text("Production >= 5000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.14 * height).text("Production >= 2000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.17 * height).text("Production >= 1000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.20 * height).text("Production >= 500").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.23 * height).text("Production >= 200").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.26 * height).text("Production >= 100").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.29 * height).text("Production >= 1").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-        g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.32 * height).text("No data available").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
-    });
 
-}
+        svg.call(zoom);
+
+        d3.select("#reset")
+            .on("click", function () {
+                svg.transition()
+                    .duration(750)
+                    .call(zoom.transform, d3.zoomIdentity);
+			})
+
+	}
+ 
+	function priceFunction() {
+		d3.select("body").select("svg").select("g").remove();
+
+        const zoom = d3.zoom()
+            .scaleExtent([1, 32])
+            .on("zoom", zoomed);
+
+		var g = svg.append("g");
+		var path = d3.geoPath()
+			.projection(projection);
+
+		d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function (error, topology) {
+			g.selectAll("path")
+				.data(topojson.feature(topology, topology.objects.countries).features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.attr('fill', colorCountryPrice)
+				.on("mouseover", function (event, d) {
+					let pos = d3.select(this).node().getBoundingClientRect();
+					d3.select("#tooltip")
+						.style("left", `${pos['x']}px`)
+						.style("top", `${(window.pageYOffset + pos['y'] - 50)}px`)
+						.text(textCountryPrice(event.id));
+					d3.select("#tooltip").classed("hidden", false);
+
+				})
+				.on("mouseout", function (event, d) {
+					d3.select("#tooltip").classed("hidden", true);
+				});
+
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.1 * height).attr("r", 5).style("fill", colorMap_price(1));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.13 * height).attr("r", 5).style("fill", colorMap_price(0.8));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.16 * height).attr("r", 5).style("fill", colorMap_price(0.65));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.19 * height).attr("r", 5).style("fill", colorMap_price(0.5));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.22 * height).attr("r", 5).style("fill", colorMap_price(0.35));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.25 * height).attr("r", 5).style("fill", colorMap_price(0.2));
+			g.append("circle").attr("cx", 0.05 * width).attr("cy", 0.28 * height).attr("r", 5).style("fill", colorMap_price(0.1));
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.1 * height).text("Price >= 45").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.13 * height).text("Price >= 40").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.16 * height).text("Price >= 35").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.19 * height).text("Price >= 30").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.22 * height).text("Price >= 20").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.25 * height).text("Price >= 10").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.28 * height).text("No data unavailable").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+		});
+
+        function zoomed() {
+            g.attr("transform", d3.event.transform);
+        }
+
+        svg.call(zoom);
+
+        d3.select("#reset")
+            .on("click", function () {
+                svg.transition()
+                    .duration(750)
+                    .call(zoom.transform, d3.zoomIdentity);
+            })
+
+	}
+
+	function countFunction() {
+		d3.select("body").select("svg").select("g").remove();
+
+		const zoom = d3.zoom()
+			.scaleExtent([1, 32])
+			.translateExtent([[-30, -30], [width+30, height+60]])
+			.on("zoom", zoomed);
+
+		var g = svg.append("g");
+		var path = d3.geoPath()
+			.projection(projection);
+
+		d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function (error, topology) {
+			g.selectAll("path")
+				.data(topojson.feature(topology, topology.objects.countries).features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.attr('fill', colorCountryCount)
+				.on("mouseover", function (event, d) {
+					let pos = d3.select(this).node().getBoundingClientRect();
+					d3.select("#tooltip")
+						.style("left", `${pos['x']}px`)
+						.style("top", `${(window.pageYOffset + pos['y'] - 50)}px`)
+						.text(textCountryCount(event.id));
+					d3.select("#tooltip").classed("hidden", false);
+
+				})
+				.on("mouseout", function (event, d) {
+					d3.select("#tooltip").classed("hidden", true);
+				});
+
+			for (var i = 1; i <= 10; i++) {
+				g.append("circle").attr("cx", 0.05 * width).attr("cy", (0.35 - i * 0.03) * height).attr("r", 5).style("fill", colorMap_count(0.1 * i));
+			}
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.05 * height).text("Production >= 20000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.08 * height).text("Production >= 10000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.11 * height).text("Production >= 5000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.14 * height).text("Production >= 2000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.17 * height).text("Production >= 1000").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.20 * height).text("Production >= 500").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.23 * height).text("Production >= 200").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.26 * height).text("Production >= 100").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.29 * height).text("Production >= 1").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+			g.append("text").attr("x", 0.05 * width + 8).attr("y", 0.32 * height).text("No data available").style("font-size", "10px").attr("alignment-baseline", "middle").style("fill", "black");
+		});
+
+		function zoomed() {
+			g.attr("transform", d3.event.transform);
+		}
+
+		svg.call(zoom);
+
+		d3.select("#reset")
+			.on("click", function () {
+				svg.transition()
+					.duration(750)
+					.call(zoom.transform, d3.zoomIdentity);
+			})
+
+	}
  
  
 </script>
