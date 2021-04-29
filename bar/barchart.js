@@ -149,7 +149,7 @@ function presentCategoryAndPopularity(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Category");
+		.text("Wine Variety");
 
 	container.append('text')
 		.attr("class", 'y text')
@@ -735,7 +735,7 @@ function presentVarietyAndPrice(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Variety");
+		.text("Wine Designation");
 
 	container.append('text')
 		.attr("class", 'y text')
@@ -928,7 +928,7 @@ function presentVarietyAndRating(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Variety");
+		.text("Wine Designation");
 
 	container.append('text')
 		.attr("class", 'y text')
@@ -1295,7 +1295,7 @@ function presentVarietyAndPP(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Variety");
+		.text("Wine Designation");
 
 	container.append('text')
 		.attr("class", 'y text')
