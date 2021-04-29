@@ -35,12 +35,7 @@
        <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
-                    About Us
-                </a>
-            </li>
-            <li>
-                <a href="#intro">Intro</a>
+              <a href="#intro">Intro</a>
             </li>
             <li>
                 <a href="#map">Map</a>
@@ -76,13 +71,15 @@
     </div>
     <br />
 
-    <div class="container my-5 p-5 shadow-3 text-center" id="map">
+    <div class="container my-5 p-5 shadow-3 " id="map">
       <!--Section: Content 4-->
       <section >
-		<h3 class="mb-3">Map </h3>
-    <p data-aos="fade-up" class="md-3">
-      Map is good for presenting information in geographic and comprehensive way. Users may want to investigate the information of the orgin of each wines, and also make comparisons of wines with respect to the prices, the ratings, the popularity, or the related taster and winery in different region. Consequently, we have this wonderful map visulization to present and compare the attributes and values among the wines, wineries as well as tasters.
-  </p>
+		<h3 class="mb-3 text-center">Map </h3>
+    <p data-aos="flip-up" class="md-3">
+      Map is good for presenting information in geographic and comprehensive way. User can switch from point, price and production view, and they can zoom in and out to find sepefic country details.When user move their cursor, the tooltip gives detailed information such as std and top winery list.
+      In this way, user can easily discover regions with the highest/lowest wine ratings and analyze geographic influence on different wine qualities, prices, and points.
+  
+   </p>
     <div class="embed-responsive embed-responsive-4by3">
       <iframe scrolling = "no" data-aos="fade-up" data-aos-duration="3000" class="embed-responsive-item" src="./world/world_map.html"></iframe>
     </div>
@@ -92,13 +89,29 @@
 
     <br />
 
-    <div class="container my-5 p-5 shadow-3 text-center" id="bar">
+    <div class="container my-5 p-5 shadow-3" id="bar">
       <!--Section: Content 2-->
       <section >
         
-		<h3 class="mb-3">Bar Chart</h3>
-        <p data-aos="fade-up" class="md-3">
-            Bar chart is good for presenting information and making comparisons. Users may want to investigate the information of each category of wine, and also make comparisons of wines with respect to the prices, the ratings, the popularity, or the related taster and winery. Consequently, we develop several bar charts to present and compare the attributes and values among the wines, wineries as well as tasters.
+		<h3 class="mb-3 text-center">Bar Chart</h3>
+        <p data-aos="flip-up" class="md-3 ">
+            Bar chart is good for presenting information and making comparisons, it perfectly intergrated with most of our comparisons.
+            We can
+            <span class="fw-light text-sm-start">
+              Find out what kinds of flavor or key component consumers like most to investigate on opponent’s products and develop their own. 
+              <br/>
+              Discover wines with the highest/lowest ratings.
+              <br/>
+              Discover the top-10 wines that have the highest/lowest prices.
+              <br/>
+              Discover the top-10 countries that produce the most amount of wines, and make a comparison of the number of wines. 
+              <br/>
+              Analyze a wine dataset and discover the correlation between popularity and the top 100 wine category	
+              <br/>
+              Discover the distribution of the number of reviews for each taster
+              <br/>
+              Analyze the price-performance ratio of each product based on their price and rating
+            </span>
         </p>
     <div class="embed-responsive embed-responsive-16by9">
       <iframe scrolling = "no" data-aos="fade-up" data-aos-duration="3000" class="embed-responsive-item" src="./bar/barchart.html"></iframe>
@@ -109,13 +122,14 @@
 
     <br />
 
-    <div class="container my-5 p-5 shadow-3 text-center" id="scatter">
+    <div class="container my-5 p-5 shadow-3" id="scatter">
       <!--Section: Content 3-->
         <section>
             <!-- <div class="col-md-6"> -->
-            <h3 class="mb-3">Scatter Plot</h3>
-            <p data-aos="fade-up" class="md-3">
-                Scatterplot is good for presenting information and making comparisons. Users may want to investigate the information of each category of wine, and also make comparisons of wines with respect to the prices, the ratings, the popularity, or the related taster and winery. Consequently, we develop several bar charts to present and compare the attributes and values among the wines, wineries as well as tasters.
+            <h3 class="mb-3  text-center">Scatter Plot</h3>
+            <p data-aos="flip-up" class="md-3">
+                Scatterplot is good for presenting information and making comparisons. User can found the corrlation bettween prices, popularity, and points by simply click the bar.<br/>
+                For price VS popularity, user is given the option to scale the range since most of the price fall in to $5 to $75 
             </p>
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe scrolling = "no" data-aos="fade-up" data-aos-duration="3000" class="embed-responsive-item" src="./Scatterplot/Scatterplot.html"></iframe>
@@ -131,9 +145,24 @@
         <section>
             <!-- <div class="col-md-6"> -->
             <h3 class="mb-3">Word Cloud</h3>
-            <p data-aos="fade-up" class="md-3">
-                Word cloud is good for presenting wine popularity and property.
-                Users may want to investigate the information of each category of wine, and also make comparisons of wines with respect to the prices, the ratings, the popularity, or the related taster and winery. Consequently, we develop several bar charts to present and compare the attributes and values among the wines, wineries as well as tasters.
+            <p data-aos="flip-up" class="md-3">
+                Word cloud give both buyer and marchndisers view of popular wine's property over the world.
+                We label the category mannually by 
+                <span style="color: purple">fruit:purple  </span><span style="color: orange">spice:orange  </span>
+                <span style="color:pink">
+                  floral:pink  
+                </span>
+                <span style="color:khaki">
+                  sherry:yellow  
+                </span>
+                <span style="color:red">
+                  microbiological:red
+                </span>
+                <span style="color:green">
+                  pungent:green
+                </span>
+                <br/>
+                In the graph we can see two slider, one is for wine and the other one is for it's review's range which user could interact with.
             </p>
             <div class="mx-auto" style="padding-left:150px">
             <div class="embed-responsive embed-responsive-4by3">
