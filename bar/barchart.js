@@ -707,7 +707,7 @@ function presentVarietyAndPrice(data) {
 		})
 		.html(function (EVENT, d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Designation: </strong><span style='color:red'>"+ d.variety_p + "</span></p>\
+					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.variety_p + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.price_rating + "</span></p>\
 					<p><strong>Avg Price_Performance_Ratio: </strong><span style='color:red'>"+ (d.price_rating / d.price).toFixed(2) + "</span></p>";
@@ -735,7 +735,7 @@ function presentVarietyAndPrice(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Designation");
+		.text("Wine Variety");
 
 	container.append('text')
 		.attr("class", 'y text')
@@ -900,7 +900,7 @@ function presentVarietyAndRating(data) {
 		})
 		.html(function (EVENT, d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Designation: </strong><span style='color:red'>"+ d.variety_r + "</span></p>\
+					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.variety_r + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.rating_price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.rating + "</span></p>\
 					<p><strong>Avg Price_Performance_Ratio: </strong><span style='color:red'>"+ (d.rating / d.rating_price).toFixed(2) + "</span></p>";
@@ -928,7 +928,7 @@ function presentVarietyAndRating(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Designation");
+		.text("Wine Variety");
 
 	container.append('text')
 		.attr("class", 'y text')
@@ -1267,7 +1267,7 @@ function presentVarietyAndPP(data) {
 		})
 		.html(function (EVENT, d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Designation: </strong><span style='color:red'>"+ d.variety_pp + "</span></p>\
+					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.variety_pp + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.pp_price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.pp_rating + "</span></p>\
 					<p><strong>Avg Price_Performance_Ratio: </strong><span style='color:red'>"+ d.ratio + "</span></p>";
@@ -1295,7 +1295,7 @@ function presentVarietyAndPP(data) {
 		.attr("class", 'x text')
 		.attr("transform", "translate(" + (SVG_WIDTH / 2) + "," + (SVG_HEIGHT - 3) + ")")
 		.style("text-anchor", "middle")
-		.text("Wine Designation");
+		.text("Wine Variety");
 
 	container.append('text')
 		.attr("class", 'y text')
