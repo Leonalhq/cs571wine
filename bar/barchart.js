@@ -127,7 +127,7 @@ function presentCategoryAndPopularity(data) {
 		})
 		.html(function (EVENT,d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Category: </strong><span style='color:red'>"+ d.category + "</span></p>\
+					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.category + "</span></p>\
 					<p><strong>Popularity: </strong><span style='color:red'>"+ d.popularity_c + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.popularity_price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.popularity_rating + "</span></p>";
@@ -707,7 +707,7 @@ function presentVarietyAndPrice(data) {
 		})
 		.html(function (EVENT, d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.variety_p + "</span></p>\
+					<p><strong>Wine Designation: </strong><span style='color:red'>"+ d.variety_p + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.price_rating + "</span></p>\
 					<p><strong>Avg Price_Performance_Ratio: </strong><span style='color:red'>"+ (d.price_rating / d.price).toFixed(2) + "</span></p>";
@@ -900,7 +900,7 @@ function presentVarietyAndRating(data) {
 		})
 		.html(function (EVENT, d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.variety_r + "</span></p>\
+					<p><strong>Wine Designation: </strong><span style='color:red'>"+ d.variety_r + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.rating_price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.rating + "</span></p>\
 					<p><strong>Avg Price_Performance_Ratio: </strong><span style='color:red'>"+ (d.rating / d.rating_price).toFixed(2) + "</span></p>";
@@ -1267,7 +1267,7 @@ function presentVarietyAndPP(data) {
 		})
 		.html(function (EVENT, d) {
 			return "<p><strong>Top: </strong> <span style='color:red'>" + d.top + "</span></p>\
-					<p><strong>Wine Variety: </strong><span style='color:red'>"+ d.variety_pp + "</span></p>\
+					<p><strong>Wine Designation: </strong><span style='color:red'>"+ d.variety_pp + "</span></p>\
 					<p><strong>Avg Price: </strong><span style='color:red'>"+ d.pp_price + "</span></p>\
 					<p><strong>Avg Rating: </strong><span style='color:red'>"+ d.pp_rating + "</span></p>\
 					<p><strong>Avg Price_Performance_Ratio: </strong><span style='color:red'>"+ d.ratio + "</span></p>";
